@@ -2,7 +2,7 @@
     display: flex; 
     justify-content: space-between; 
     margin: 5px; 
-    padding:5px
+    padding:5px ; 
 }
 
 .menu{
@@ -31,7 +31,7 @@
 } 
 
 .star-icon{
-    font-size: 30px;  
+    font-size: 25px;  
     color: #FBC04B;
 
 }
@@ -78,3 +78,9 @@
     font-size: 20px;
 }
 
+#select{
+    background: transparent; 
+    color: #AEB0B7; 
+    border: none; 
+    font-size: 20px;
+}

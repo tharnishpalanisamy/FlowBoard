@@ -7,15 +7,16 @@ export default function Header(){
                 <div className="menu">
 
                     <div className="menu-option">
-                        <i class="fa-solid fa-bars menu-icon"></i>
+                        <i className="fa-solid fa-bars menu-icon"></i>
                     </div>
 
                     <div className="menu-dropdown">
-                        <span className='menu-text'>Personal</span>
+                        <span className='menu-text'>Personal</span> 
+                        <select name="" id="select"></select>
                     </div> 
 
                     <div className="menu-star">
-                        <i class="fa-solid fa-star star-icon"></i>
+                        <i className="fa-solid fa-star star-icon"></i>
                     </div>
                 </div> 
 
@@ -30,15 +31,15 @@ export default function Header(){
                         />
                     </div>
                     <div className="theme">
-                        <button className='theme-btn'><i class='bx bx-sun theme-icon'></i></button> 
+                        <button className='theme-btn'><i className='bx bx-sun theme-icon'></i></button> 
                     </div> 
 
                     <div className="notification">
-                        <button className="notification-btn"><i class="fa-regular fa-bell notification-icon"></i></button>
+                        <button className="notification-btn"><i className="fa-regular fa-bell notification-icon"></i></button>
                     </div>
 
                     <div className="profile">
-                        <button className="profile-btn"><i class="fa-solid fa-user profile-icon"></i></button>
+                        <button className="profile-btn"><i className="fa-solid fa-user profile-icon"></i></button>
                     </div>
                 </div>
                 

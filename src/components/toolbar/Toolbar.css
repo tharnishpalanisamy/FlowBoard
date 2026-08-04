@@ -1,0 +1,70 @@
+.toolbar{
+    display: flex; 
+    gap: 100px; 
+    margin-top: 25px; 
+    padding:10px 40px; 
+    justify-content: space-between;  
+    align-items: center;
+    border-bottom: 1px solid #202936;
+}
+
+
+.toolbar-options{
+    display: flex;   
+    gap: 50px; 
+}
+
+.toolbar-link{
+    color: #CCD1D6; 
+    display: flex; 
+    gap: 10px; 
+    font-size: 14px;
+}
+
+.toolbar-active{
+    color:#8D70F0; 
+    background: #15192C;   
+    padding-bottom: 10px;
+    border-bottom: 4px solid #8D70F0; 
+    border-radius: 4px;
+
+}
+
+.toolbar-buttons{
+    display: flex;  
+    align-items: center;
+    gap:25px
+}
+
+.filterBtn{
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    padding: 8px 15px; 
+    border-radius: 6px;
+    background: transparent; 
+    border: 1px solid #25354a; 
+    color: #CCD1D6; 
+    background: #0E141C;
+}
+
+.addTaskBtn{
+    padding: 8px 15px; 
+    color: #CCD1D6; 
+    background:#8D70F0;  
+    border-radius: 4px;
+    border: 1px solid rgb(99, 74, 147);
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+}
+
+.menuBtn{
+    padding: 8px 10px; 
+    border-radius: 6px;
+    background: transparent; 
+    border: 1px solid #25354a; 
+    color: #CCD1D6; 
+    background: #0E141C;
+
+}
