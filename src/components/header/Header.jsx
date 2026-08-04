@@ -1,0 +1,48 @@
+import './Header.css' 
+
+export default function Header(){
+    return(
+        <header>
+            <nav className="nav-bar">
+                <div className="menu">
+
+                    <div className="menu-option">
+                        <i class="fa-solid fa-bars menu-icon"></i>
+                    </div>
+
+                    <div className="menu-dropdown">
+                        <span className='menu-text'>Personal</span>
+                    </div> 
+
+                    <div className="menu-star">
+                        <i class="fa-solid fa-star star-icon"></i>
+                    </div>
+                </div> 
+
+                <div className="options">
+                    <div className="search-task">
+                        <i className="fa-solid fa-magnifying-glass search-icon"></i>
+
+                        <input
+                            type="text"
+                            className="input-task"
+                            placeholder="Search tasks..."
+                        />
+                    </div>
+                    <div className="theme">
+                        <button className='theme-btn'><i class='bx bx-sun theme-icon'></i></button> 
+                    </div> 
+
+                    <div className="notification">
+                        <button className="notification-btn"><i class="fa-regular fa-bell notification-icon"></i></button>
+                    </div>
+
+                    <div className="profile">
+                        <button className="profile-btn"><i class="fa-solid fa-user profile-icon"></i></button>
+                    </div>
+                </div>
+                
+            </nav>
+        </header>
+    )
+}

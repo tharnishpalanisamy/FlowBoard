@@ -1,8 +1,5 @@
-/* ===========================
-   DARK THEME
-=========================== */
 
-.dark {
+:root {
 
   /* Backgrounds */
   --bg: #0F172A;
@@ -57,3 +54,28 @@
   --space-2xl: 32px;
 }
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+  background: var(--bg); 
+  font-family: var(--font);
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* IE & old Edge */
+body {
+    -ms-overflow-style: none;
+}

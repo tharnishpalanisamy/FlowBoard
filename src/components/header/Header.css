@@ -1,0 +1,80 @@
+.nav-bar{
+    display: flex; 
+    justify-content: space-between; 
+    margin: 5px; 
+    padding:5px
+}
+
+.menu{
+    display: flex; 
+    gap: 20px; 
+    align-items: self-start;
+    color: #AEB0B7;
+}
+
+.options{
+    display: flex; 
+    gap: 20px;
+    color: #AEB0B7;
+}
+
+
+/* menu icon */ 
+.menu-icon{
+    font-size: 30px; 
+    color: #AEB0B7;
+}
+
+.menu-text{
+    font-size: 25px;
+    font-weight: 550;
+} 
+
+.star-icon{
+    font-size: 30px;  
+    color: #FBC04B;
+
+}
+
+
+/* input */ 
+
+
+
+.search-task{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon{
+    position: absolute;
+    left: 14px;
+    color: #94A3B8;
+    font-size: 14px;
+}
+
+.input-task{
+    width: 100%;
+    padding: 10px 100px 10px 40px; /* left padding makes room for the icon */
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #1E293B;
+    color: #F8FAFC;
+}
+
+.input-task::placeholder{
+    color: #94A3B8;
+}
+
+.theme-btn , .notification-btn , .profile-btn     {
+    background-color: #1E293B; 
+    border: none; 
+    color: #AEB0B7; 
+    padding: 7px;
+} 
+
+.theme-icon , .notification-icon , .profile-icon {
+    font-size: 20px;
+}
+
