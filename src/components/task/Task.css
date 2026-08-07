@@ -1,0 +1,77 @@
+.card{
+    color: white; 
+    padding: 15px; 
+    border: 2px solid red; 
+    width: 350px;
+    border: 1px solid #202936; 
+    border-radius: 10px;
+}
+
+.card-header{
+    display: flex;
+    gap: 15px;
+}
+
+.card-title{
+    font-size: 15px;
+}
+
+
+.task-check {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    color: transparent;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.task-check:hover {
+    border-color: #8D70F0;
+    background: rgba(99, 102, 241, 0.08);
+}
+
+
+.Study{
+    background: #3F307F; 
+    color: #191A35;  
+    padding: 4px 8px; 
+    border-radius: 12px; 
+    font-size: 13px;
+}
+
+.High{
+    background: #8c2020; 
+    color: #191A35;  
+    padding: 4px 8px; 
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.card-body{
+    padding: 10px 30px; 
+    display: flex; 
+    gap: 10px;
+}
+
+.date , .message{
+    color: #9699A3; 
+    font-size: 13px;
+}
+
+
+.card-footer{
+    display: flex;
+    gap: 25px;
+}
+
+.date{
+    display: flex; 
+    gap: 10px;
+}

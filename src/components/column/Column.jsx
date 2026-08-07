@@ -1,5 +1,5 @@
 import './Column.css' 
-
+import Task from '../task/Task' 
 export default function Column(props) {
     return(
         <div className="column">
@@ -15,7 +15,16 @@ export default function Column(props) {
             </div>
 
             <div className="col-body">
-                
+                <Task/> 
+                <Task/>
+                <Task/>
+            </div>
+
+            <div className="col-footer">
+                <button className="add-task-button">
+                    <span><i className="fa-solid fa-plus add-task-icon"></i></span> 
+                    Add Task
+                </button>
             </div>
         </div>
     )

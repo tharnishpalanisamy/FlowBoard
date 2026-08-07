@@ -1,7 +1,7 @@
 .toolbar{
     display: flex; 
     gap: 100px; 
-    margin-top: 25px; 
+    margin-top: 10px; 
     padding:10px 40px; 
     justify-content: space-between;  
     align-items: center;
@@ -10,7 +10,8 @@
 
 
 .toolbar-options{
-    display: flex;   
+    display: flex;    
+    align-items: center;
     gap: 50px; 
 }
 
