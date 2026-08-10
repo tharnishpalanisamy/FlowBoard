@@ -5,10 +5,12 @@
 .main-content{
     padding-top: 10px;
     flex: 1;
+    margin-left: 290px;
+    min-height: 100vh;
 }
 
 .columns{
     display: flex; 
     justify-content: center; 
-    gap: 10px;
+    gap: 15px;
 }

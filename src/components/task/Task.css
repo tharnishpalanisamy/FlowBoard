@@ -38,20 +38,32 @@
 }
 
 
-.Study{
-    background: #3F307F; 
-    color: #191A35;  
+.category{
     padding: 4px 8px; 
     border-radius: 12px; 
     font-size: 13px;
 }
-
-.High{
-    background: #8c2020; 
+.Study{
+    background: #3F307F; 
+    color: #191A35;  
+} 
+.priority{
     color: #191A35;  
     padding: 4px 8px; 
     border-radius: 12px;
     font-size: 13px;
+}
+.High , .Coding{
+    color: #E35253;
+    background: #2F1C26;
+}
+.Medium , .Project{
+    background-color: #21201E; 
+    color: #F5A92A;
+}
+.Low , .Personal{
+    color: #57AF70; 
+    background-color: #122324;
 }
 
 .card-body{

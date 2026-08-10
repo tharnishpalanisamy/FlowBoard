@@ -5,7 +5,8 @@
     width: 380px;  
     margin-top: 10px;
     border-radius: 10px; 
-    min-height: 500px;
+    min-height: 500px; 
+    margin-bottom: 10px;
      
 }
 
@@ -43,11 +44,31 @@
 
 .add-task-button{
     background: transparent; 
-    color: #8F65DC; 
+     
     border: none;
     display: flex;
     gap: 10px; 
     font-size: 16px; 
     cursor: pointer; 
     
+}
+
+.todo-button , .todo-title{
+    color: #8F65DC;
+}
+
+.progress-button , .progress-title{
+    color: #316DDC;
+}
+
+.done-button , .done-title{
+    color: #5EC175;
+}
+
+.progress-count{
+    background: #103063;
+}
+
+.done-count{
+    background: #16352B;
 }

@@ -1,12 +1,33 @@
 import './Column.css' 
-import Task from '../task/Task' 
-export default function Column(props) {
+import Task from '../task/Task'  
+import {tasksData} from '../../data/tasks'
+import { useState } from 'react'
+
+export default function Column(props) { 
+
+    const [tasks , setTasks] = useState(tasksData) 
+
+    let data = tasks.filter(task => task.status == props.catagory) 
+    let tasksEl = data.map(task =>{
+        return (
+            <Task 
+                title = {task.title}
+                status = {task.status}
+                category = {task.category} 
+                priority = {task.priority} 
+                date = {task.date} 
+                count = {task.count}
+                
+                />
+        )
+    })
+
     return(
         <div className="column">
             <div className="col-header">
                 <div className="col-text">
-                    <p className="column-title">To Do</p> 
-                    <span className="column-count">5</span> 
+                    <p className={`column-title ${props.catagory}-title`}>{props.title}</p> 
+                    <span className={`column-count ${props.catagory}-count`}>{props.count}</span> 
                 </div> 
 
                 <div className="col-add">
@@ -15,13 +36,11 @@ export default function Column(props) {
             </div>
 
             <div className="col-body">
-                <Task/> 
-                <Task/>
-                <Task/>
+                {tasksEl}
             </div>
 
             <div className="col-footer">
-                <button className="add-task-button">
+                <button className= {`add-task-button ${props.catagory}-button`}>
                     <span><i className="fa-solid fa-plus add-task-icon"></i></span> 
                     Add Task
                 </button>
