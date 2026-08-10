@@ -5,9 +5,10 @@ import { useState } from 'react'
 
 export default function Column(props) { 
 
-    const [tasks , setTasks] = useState(tasksData) 
 
-    let data = tasks.filter(task => task.status == props.catagory) 
+
+
+    let data = props.tasks.filter(task => task.status == props.catagory) 
     let tasksEl = data.map(task =>{
         return (
             <Task 
@@ -16,7 +17,7 @@ export default function Column(props) {
                 category = {task.category} 
                 priority = {task.priority} 
                 date = {task.date} 
-                count = {task.count}
+                count = {task.count} 
                 
                 />
         )
@@ -31,7 +32,11 @@ export default function Column(props) {
                 </div> 
 
                 <div className="col-add">
-                    <p className="sidebar-link"><span><i className="fa-solid fa-plus icon-plus icon add-icon"></i></span></p>
+                    <button className="sidebar-link add-btn-top" onClick={props.add}>
+                        <span>
+                            <i className="fa-solid fa-plus icon-plus icon add-icon"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
@@ -40,7 +45,9 @@ export default function Column(props) {
             </div>
 
             <div className="col-footer">
-                <button className= {`add-task-button ${props.catagory}-button`}>
+                <button className= {`add-task-button ${props.catagory}-button`} 
+                onClick={props.add}
+                >
                     <span><i className="fa-solid fa-plus add-task-icon"></i></span> 
                     Add Task
                 </button>

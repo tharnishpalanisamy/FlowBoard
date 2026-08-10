@@ -1,7 +1,6 @@
 import './Task.css' 
 
 export default function Task(props) { 
-    console.log(props.category);
     
     return(
         <div className="card">

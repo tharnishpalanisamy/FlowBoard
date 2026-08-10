@@ -1,6 +1,6 @@
 import './Toolbar.css' 
 
-export default function Toolbar(){
+export default function Toolbar(props){
     return(
         <div className="toolbar">
             <div className="toolbar-options">
@@ -12,7 +12,7 @@ export default function Toolbar(){
 
             <div className="toolbar-buttons">
                 <button className="filterBtn"><span><i class='bx bx-filter-alt icon' ></i></span> Filter</button> 
-                <button className="addTaskBtn"><span>
+                <button className="addTaskBtn" onClick={props.add}><span>
                     <i className="fa-solid fa-plus icon-plus icon add-icon"></i></span> Add Task
                 </button>
                 <button className="menuBtn"><i className="fa-solid fa-ellipsis-vertical icon menuIcon"></i></button>

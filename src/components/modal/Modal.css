@@ -1,0 +1,163 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal{
+    width: clamp(300px , 480px , 480px); 
+    background: #18202A !important;
+    margin-top: clamp(50px , 100px , 100px); 
+    padding: 20px;  
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    color: #E5E6E9;
+    border: 2px solid #2D3541; 
+    border-radius: 10px; 
+    margin: clamp(50px , 100px , 100px)  auto 0px auto;
+}
+
+.modal-header{
+    display: flex; 
+    justify-content: space-between;
+}
+.header-title{
+    color: #E5E6E9; 
+}
+
+.modal-close-btn{
+    background: transparent; 
+    font-size: 20px;
+    border: none;  
+    color: #E5E6E9;
+
+}
+
+
+.modal-title{  
+    color: #E5E6E9;
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column; 
+    gap: 7px;
+} 
+
+.title-input{ 
+    padding:12px 8px; 
+    border-radius: 8px; 
+    border: 2px solid #2D3541; 
+    outline: none; 
+    color: #E5E6E9;
+    background: #18202A;
+}
+
+.modal-description{  
+    padding: 10px 0px;
+    display: flex; 
+    flex-direction: column;
+    gap: 7px; 
+    color: #E5E6E9;
+}
+
+.description-input{
+    border: 2px solid #2D3541;
+    outline: none; 
+    border-radius: 8px; 
+    padding: 10px; 
+    color: #E5E6E9;
+    background: #18202A;
+    resize: none; 
+    
+}
+
+.container1 , .container2{
+    display: flex; 
+    justify-content: space-between;  
+    padding: 10px 0px;
+}
+
+.board , .status , .priority-container , .date-container {
+    display: flex; 
+    flex-direction: column;
+    gap : 5px;
+}
+
+.status-label , .board-label , .category-label ,.date-label , .priority-label  {
+    color: #86878C; 
+    font-size: 14px;
+}
+.status-select , .board-select ,.priority-select ,.date-input  {
+    width: 200px; 
+    background: #18202a; 
+    padding: 10px;  
+    font-size: 16px; 
+    border-radius: 10px; 
+    color: #E5E6E9;
+    border: 2px solid #2D3541;
+}
+
+
+
+select:focus{
+    outline: none;
+    border: 2px solid #397add;
+}
+
+
+option{
+    border-radius: 10px; 
+    outline: none; 
+    border: 2px solid #2D3541;
+
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+}
+
+.category{
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px;
+}
+
+.category-select{ 
+    padding: 12px; 
+    border-radius: 10px; 
+    background: #18202a;  
+    border: 2px solid #2D3541;
+    color: #E5E6E9;
+    font-size: 16px; 
+}
+
+.category-select:focus{
+    outline: none; 
+}
+
+.modal-button-container{ 
+    margin-top: 30px;
+    display: flex; 
+    justify-content: end; 
+    gap: 30px;
+}
+
+button{
+    cursor: pointer;
+}
+
+.cancel-task-button , .create-task-button{
+    padding: 12px 25px;  
+    background: transparent;
+    border: 2px solid #2D3541;
+    border-radius: 8px; 
+    color: #E5E6E9; 
+
+}
+
+.create-task-button{
+    background: #5A3BDF;
+}

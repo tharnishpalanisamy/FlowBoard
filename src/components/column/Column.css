@@ -72,3 +72,9 @@
 .done-count{
     background: #16352B;
 }
+
+.add-btn-top{
+    background: transparent; 
+    border: none; 
+    color: white;
+}
