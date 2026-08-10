@@ -19,6 +19,11 @@ export default function Layout (){
         setShowModal(true)
     }
 
+    function deleteTask(id) {
+        setTasks(prevTasks => prevTasks.filter(task =>{
+            return task.title != id 
+        }) )
+    }
     return(
         <>
         <div className="parent">
@@ -29,28 +34,28 @@ export default function Layout (){
                 <div className="columns">
                     <Column
                     title = 'To Do' 
-                    count = '5' 
                     catagory = 'todo' 
                     tasks = {tasks} 
                     setTasks = {setTasks} 
                     add = {()=>openModal('todo')} 
+                    delete = {deleteTask}
 
                     />
                     <Column
                     title = 'In Progress' 
-                    count = '5' 
                     catagory = 'progress'
                     tasks = {tasks}
                     setTasks = {setTasks}
                     add = {()=>openModal('progress')} 
+                    delete = {deleteTask}
                     />
                     <Column
                     title = 'Done' 
-                    count = '5' 
                     catagory = 'done'
                     tasks = {tasks}
                     setTasks = {setTasks}
                     add = {()=>openModal('done')} 
+                    delete = {deleteTask}
                     />
                 </div> 
 

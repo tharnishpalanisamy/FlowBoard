@@ -11,7 +11,7 @@ export default function Toolbar(props){
             </div>
 
             <div className="toolbar-buttons">
-                <button className="filterBtn"><span><i class='bx bx-filter-alt icon' ></i></span> Filter</button> 
+                <button className="filterBtn"><span><i className='bx bx-filter-alt icon' ></i></span> Filter</button> 
                 <button className="addTaskBtn" onClick={props.add}><span>
                     <i className="fa-solid fa-plus icon-plus icon add-icon"></i></span> Add Task
                 </button>

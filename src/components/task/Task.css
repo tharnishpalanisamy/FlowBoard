@@ -1,7 +1,6 @@
 .card{
     color: white; 
     padding: 15px; 
-    border: 2px solid red; 
     width: 350px;
     border: 1px solid #202936; 
     border-radius: 10px;
@@ -9,7 +8,12 @@
 
 .card-header{
     display: flex;
-    gap: 15px;
+    gap: 15px; 
+    justify-content: space-between;
+}
+.header-left{
+    display: flex; 
+    gap:15px
 }
 
 .card-title{
@@ -86,4 +90,15 @@
 .date{
     display: flex; 
     gap: 10px;
+}
+
+.delete-task-button{
+    background: transparent; 
+    border: none; 
+    color: #c44747; 
+    transition: 0.6s;
+}
+
+.delete-task-button:hover i{
+    transform: scale(1.2);
 }

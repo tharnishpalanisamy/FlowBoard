@@ -8,12 +8,15 @@ export default function Column(props) {
     let tasksEl = data.map(task =>{
         return (
             <Task 
+                key = {task.title}
                 title = {task.title}
                 status = {task.status}
                 category = {task.category} 
                 priority = {task.priority} 
                 date = {task.date} 
-                count = {task.count} 
+                count = {task.count}  
+                delete = {props.delete}
+                
                 
                 />
         )
@@ -24,7 +27,7 @@ export default function Column(props) {
             <div className="col-header">
                 <div className="col-text">
                     <p className={`column-title ${props.catagory}-title`}>{props.title}</p> 
-                    <span className={`column-count ${props.catagory}-count`}>{props.count}</span> 
+                    <span className={`column-count ${props.catagory}-count`}>{data.length}</span> 
                 </div> 
 
                 <div className="col-add">
