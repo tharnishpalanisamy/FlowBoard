@@ -4,10 +4,6 @@ import {tasksData} from '../../data/tasks'
 import { useState } from 'react'
 
 export default function Column(props) { 
-
-
-
-
     let data = props.tasks.filter(task => task.status == props.catagory) 
     let tasksEl = data.map(task =>{
         return (

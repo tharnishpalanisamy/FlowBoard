@@ -11,15 +11,21 @@ import { useState } from 'react'
 export default function Layout (){ 
     const [tasks , setTasks] = useState(tasksData)  
     console.log(tasks);
-    
     const [showModal , setShowModal] = useState(false)  
+    const [taskStatus , setTaskStatus] = useState('todo') 
+
+    function openModal(status) {
+        setTaskStatus(status) 
+        setShowModal(true)
+    }
+
     return(
         <>
         <div className="parent">
             <SideBar/> 
             <div className="main-content">
                 <Header/> 
-                <Toolbar add = {()=>setShowModal(true)}/> 
+                <Toolbar add = {()=>openModal('todo')}/> 
                 <div className="columns">
                     <Column
                     title = 'To Do' 
@@ -27,7 +33,7 @@ export default function Layout (){
                     catagory = 'todo' 
                     tasks = {tasks} 
                     setTasks = {setTasks} 
-                    add = {()=>setShowModal(true)} 
+                    add = {()=>openModal('todo')} 
 
                     />
                     <Column
@@ -36,7 +42,7 @@ export default function Layout (){
                     catagory = 'progress'
                     tasks = {tasks}
                     setTasks = {setTasks}
-                    add = {()=>setShowModal(true)} 
+                    add = {()=>openModal('progress')} 
                     />
                     <Column
                     title = 'Done' 
@@ -44,7 +50,7 @@ export default function Layout (){
                     catagory = 'done'
                     tasks = {tasks}
                     setTasks = {setTasks}
-                    add = {()=>setShowModal(true)} 
+                    add = {()=>openModal('done')} 
                     />
                 </div> 
 
@@ -52,6 +58,7 @@ export default function Layout (){
                     <Modal 
                         close = {()=>setShowModal(false)} 
                         setTasks = {setTasks}
+                        status = {taskStatus}
                     />
                 }
             </div>

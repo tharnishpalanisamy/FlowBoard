@@ -16,7 +16,7 @@ export default function Modal(props){
             date: data.get('date'),
             category: data.get('category') ,
             count: Math.ceil(Math.random()   * 5)  , 
-            status : 'todo'
+            status : props.status
         }
 
         props.setTasks(prevVal => [...prevVal , newTask])
