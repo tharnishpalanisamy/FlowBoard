@@ -18,7 +18,16 @@ export default function Modal(props) {
         if(!title) {
             alert('title cannot be empty') 
             return  
+        } 
+
+        for (let i = 0 ; i < props.tasks.length ; i++) {
+            let task = props.tasks[i] 
+            if (task.title == title) {
+                alert('title already exists') 
+                return 
+            }
         }
+
         
         let newTask = { 
             id : Date.now()  ,  

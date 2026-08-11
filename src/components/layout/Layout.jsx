@@ -16,7 +16,7 @@ export default function Layout() {
     function openModal(status) {
         setShowModal(true) 
         setStatus(status) 
-    }
+    } 
     return (
         <>
             <div className="parent">
@@ -60,7 +60,8 @@ export default function Layout() {
                     {showModal && <Modal  
                         status = {status}
                         closeModal = {()=> setShowModal(false)} 
-                        setTasks = {setTasks} 
+                        setTasks = {setTasks}  
+                        tasks = {tasks}
                     />}
 
                 </div>
