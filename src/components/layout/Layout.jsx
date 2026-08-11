@@ -15,7 +15,7 @@ export default function Layout() {
 
     function openModal(status) {
         setShowModal(true) 
-        setStatus(status)
+        setStatus(status) 
     }
     return (
         <>
@@ -36,23 +36,29 @@ export default function Layout() {
                          title = 'To Do'  
                          status = 'todo'
                          tasks = {tasks} 
+                         setStatus = {setStatus}
 
                          />
-                        <Column showModal = {() =>setShowModal(true)} setStatus = {setStatus} 
+                        <Column 
+                        showModal = {() => openModal('progress') } 
                         title = 'In progress'  
                          status = 'progress'
                          tasks = {tasks} 
+                         setStatus = {setStatus}
                         />
-                        <Column showModal = {() =>setShowModal(true)} setStatus = {setStatus}
+                        <Column 
+                        showModal = {() => openModal('done') } 
                         
                         title = 'Done'  
                          status = 'done'
                          tasks = {tasks} 
+                         setStatus = {setStatus}
                          />
  
                     </div>
 
                     {showModal && <Modal  
+                        status = {status}
                         closeModal = {()=> setShowModal(false)} 
                         setTasks = {setTasks} 
                     />}

@@ -125,7 +125,8 @@ export default function Modal(props) {
                                 <select
                                     name="status"
                                     id="status"
-                                    className="status-select"
+                                    className="status-select" 
+                                    defaultValue={props.status}
                                 >
                                     <option value="todo">
                                         todo

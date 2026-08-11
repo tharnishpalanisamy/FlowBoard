@@ -38,7 +38,7 @@ export default function Column(props) {
                     <button
                         className="sidebar-link add-btn-top"
                         type="button" 
-                        onClick={props.showModal} 
+                        onClick={() => props.showModal(props.status)} 
                     >
                         <span>
                             <i className="fa-solid fa-plus icon-plus icon add-icon"></i>
@@ -60,7 +60,7 @@ export default function Column(props) {
                 <button
                     className={`add-task-button todo-button ${props.status}-button`}
                     type="button" 
-                    onClick={props.showModal} 
+                    onClick={() => props.showModal(props.status)} 
                 >
                     <span>
                         <i className="fa-solid fa-plus add-task-icon"></i>
