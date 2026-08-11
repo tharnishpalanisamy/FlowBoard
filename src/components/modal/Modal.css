@@ -17,15 +17,16 @@
     color: #E5E6E9;
     border: 2px solid #2D3541; 
     border-radius: 10px; 
-    margin: clamp(50px , 100px , 100px)  auto 0px auto;
+    margin: clamp(40px , 80px , 80px)  auto 0px auto;
 }
 
 .modal-header{
     display: flex; 
     justify-content: space-between;
 }
-.header-title{
-    color: #E5E6E9; 
+.header-title{ 
+    margin-bottom: 10px;
+    color: #5A3BDF; 
 }
 
 .modal-close-btn{
@@ -85,7 +86,7 @@
     gap : 5px;
 }
 
-.status-label , .board-label , .category-label ,.date-label , .priority-label  {
+.status-label , .board-label , .board-label ,.date-label , .priority-label  {
     color: #86878C; 
     font-size: 14px;
 }
@@ -119,13 +120,13 @@ option{
     cursor: pointer;
 }
 
-.category{
+.label{
     display: flex; 
     flex-direction: column; 
     gap: 5px;
 }
 
-.category-select{ 
+.label-select{ 
     padding: 12px; 
     border-radius: 10px; 
     background: #18202a;  
@@ -134,7 +135,7 @@ option{
     font-size: 16px; 
 }
 
-.category-select:focus{
+.board-select:focus{
     outline: none; 
 }
 
@@ -159,5 +160,6 @@ button{
 }
 
 .create-task-button{
-    background: #5A3BDF;
+    background: #5A3BDF; 
+    border: none;
 }

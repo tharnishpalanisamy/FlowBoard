@@ -1,5 +1,5 @@
 .card{
-    color: white; 
+    color: AEB0B7; 
     padding: 15px; 
     width: 350px;
     border: 1px solid #202936; 
@@ -9,7 +9,8 @@
 .card-header{
     display: flex;
     gap: 15px; 
-    justify-content: space-between;
+    justify-content: space-between; 
+    align-items: center;
 }
 .header-left{
     display: flex; 
@@ -42,15 +43,22 @@
 }
 
 
-.category{
+.board{
     padding: 4px 8px; 
     border-radius: 12px; 
     font-size: 13px;
-}
-.Study{
+} 
+
+.Jira{
     background: #3F307F; 
     color: #191A35;  
 } 
+
+.Kanban{
+    background: #103063;
+    color: #256DDC;
+}
+
 .priority{
     color: #191A35;  
     padding: 4px 8px; 
@@ -92,13 +100,38 @@
     gap: 10px;
 }
 
-.delete-task-button{
-    background: transparent; 
+.header-button-container{
+    display: flex;
+    gap: 10px;
+}
+
+.delete-task-button , .edit-task-button{
+background: transparent;
     border: none; 
-    color: #c44747; 
-    transition: 0.6s;
+    color: #AEB0B7; 
+    transition: 0.3s;  
+    font-size: 15px;  
+    padding: 7px 10px;
+}
+
+.edit-task-button{
+    padding: 7px 15px;
+}
+
+.delete-task-button:hover  { 
+    color: #E35253;
+    background: #1E293B; 
+}
+
+.edit-task-button:hover{
+    color: #F5A92A;
+    background: #1E293B;
 }
 
 .delete-task-button:hover i{
-    transform: scale(1.2);
+    transform: scale(1.1);
+} 
+
+.edit-task-button:hover i{
+    transform: scale(1.1);
 }

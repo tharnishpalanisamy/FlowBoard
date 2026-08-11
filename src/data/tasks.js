@@ -1,127 +1,222 @@
 export const tasksData = [
-  // TODO
   {
+    id: 1,
     title: 'Complete React Course',
+    description: 'Finish the remaining React lessons and build the required projects.',
+    board: 'Kanban',
     status: 'todo',
-    category: 'Study',
     priority: 'High',
-    date: 'Aug 11',
-    count: '3'
+    date: '2026-08-12',
+    labels: 'Study',
+    count: 3
   },
   {
+    id: 2,
     title: 'Solve Graph LeetCode Problems',
+    description: 'Practice graph algorithms and solve at least two LeetCode problems.',
+    board: 'Kanban',
     status: 'todo',
-    category: 'Coding',
     priority: 'Medium',
-    date: 'Aug 12',
-    count: '2'
+    date: '2026-08-13',
+    labels: 'Coding',
+    count: 2
   },
   {
-    title: 'Build Flow Board UI',
-    status: 'todo',
-    category: 'Project',
+    id: 3,
+    title: 'Build FlowBoard UI',
+    description: 'Improve the Kanban board layout and complete the main task interface.',
+    board: 'Kanban',
+    status: 'progress',
     priority: 'High',
-    date: 'Aug 13',
-    count: '1'
+    date: '2026-08-11',
+    labels: 'Coding',
+    count: 1
   },
   {
+    id: 4,
     title: 'Revise JavaScript Concepts',
+    description: 'Revise closures, prototypes, this, promises, and ES6 concepts.',
+    board: 'Personal',
     status: 'todo',
-    category: 'Study',
     priority: 'Medium',
-    date: 'Aug 14',
-    count: '4'
+    date: '2026-08-15',
+    labels: 'Study',
+    count: 4
   },
   {
+    id: 5,
     title: 'Plan Weekend Activities',
+    description: 'Decide on activities, gaming, movies, and study goals for the weekend.',
+    board: 'Personal',
     status: 'todo',
-    category: 'Personal',
     priority: 'Low',
-    date: 'Aug 15',
-    count: '2'
-  },
-
-  // IN PROGRESS
-  {
-    title: 'Learn React State Management',
-    status: 'progress',
-    category: 'Study',
-    priority: 'High',
-    date: 'Aug 10',
-    count: '3'
+    date: '2026-08-14',
+    labels: 'Study',
+    count: 2
   },
   {
-    title: 'Solve Pacific Atlantic Water Flow',
-    status: 'progress',
-    category: 'Coding',
-    priority: 'High',
-    date: 'Aug 10',
-    count: '2'
-  },
-  {
+    id: 6,
     title: 'Implement Task Filtering',
+    description: 'Add filtering by status, priority, board, and labels.',
+    board: 'Kanban',
     status: 'progress',
-    category: 'Project',
-    priority: 'Medium',
-    date: 'Aug 11',
-    count: '1'
+    priority: 'High',
+    date: '2026-08-12',
+    labels: 'Coding',
+    count: 2
   },
   {
+    id: 7,
+    title: 'Add Task Editing',
+    description: 'Allow users to open an existing task and update its information.',
+    board: 'Kanban',
+    status: 'progress',
+    priority: 'High',
+    date: '2026-08-13',
+    labels: 'Coding',
+    count: 1
+  },
+  {
+    id: 8,
+    title: 'Learn React State Management',
+    description: 'Understand useState, state updates, lifting state, and component communication.',
+    board: 'Kanban',
+    status: 'done',
+    priority: 'High',
+    date: '2026-08-09',
+    labels: 'Study',
+    count: 3
+  },
+  {
+    id: 9,
+    title: 'Solve Pacific Atlantic Water Flow',
+    description: 'Solve the problem using DFS or BFS and understand the multi-source approach.',
+    board: 'Jira',
+    status: 'progress',
+    priority: 'High',
+    date: '2026-08-12',
+    labels: 'Coding',
+    count: 2
+  },
+  {
+    id: 10,
     title: 'Practice React Props',
-    status: 'progress',
-    category: 'Study',
-    priority: 'Medium',
-    date: 'Aug 12',
-    count: '4'
-  },
-  {
-    title: 'Organize Project Files',
-    status: 'progress',
-    category: 'Personal',
-    priority: 'Low',
-    date: 'Aug 13',
-    count: '2'
-  },
-
-  // DONE
-  {
-    title: 'Complete React Components',
+    description: 'Build small components to practice passing and destructuring props.',
+    board: 'Personal',
     status: 'done',
-    category: 'Study',
+    priority: 'Medium',
+    date: '2026-08-08',
+    labels: 'Study',
+    count: 4
+  },
+  {
+    id: 11,
+    title: 'Set Up Local Storage',
+    description: 'Persist FlowBoard tasks using browser localStorage.',
+    board: 'Kanban',
+    status: 'todo',
     priority: 'High',
-    date: 'Aug 08',
-    count: '3'
+    date: '2026-08-16',
+    labels: 'Coding',
+    count: 2
   },
   {
-    title: 'Solve Clone Graph',
-    status: 'done',
-    category: 'Coding',
-    priority: 'Medium',
-    date: 'Aug 07',
-    count: '2'
-  },
-  {
-    title: 'Create Flow Board Layout',
-    status: 'done',
-    category: 'Project',
+    id: 12,
+    title: 'Implement Drag and Drop',
+    description: 'Allow tasks to be moved between Todo, Progress, and Done columns.',
+    board: 'Kanban',
+    status: 'todo',
     priority: 'High',
-    date: 'Aug 06',
-    count: '1'
+    date: '2026-08-18',
+    labels: 'Coding',
+    count: 3
   },
   {
-    title: 'Revise React JSX',
-    status: 'done',
-    category: 'Study',
+    id: 13,
+    title: 'Create Project Dashboard',
+    description: 'Display task statistics, completion percentage, and productivity metrics.',
+    board: 'Jira',
+    status: 'progress',
     priority: 'Medium',
-    date: 'Aug 05',
-    count: '4'
+    date: '2026-08-17',
+    labels: 'Coding',
+    count: 2
   },
   {
+    id: 14,
     title: 'Clean Up Workspace',
+    description: 'Organize the desk and remove unnecessary files and items.',
+    board: 'Personal',
     status: 'done',
-    category: 'Personal',
     priority: 'Low',
-    date: 'Aug 04',
-    count: '2'
+    date: '2026-08-07',
+    labels: 'Study',
+    count: 1
+  },
+  {
+    id: 15,
+    title: 'Revise Topological Sort',
+    description: 'Review Kahn algorithm and DFS based topological sorting.',
+    board: 'Personal',
+    status: 'done',
+    priority: 'Medium',
+    date: '2026-08-06',
+    labels: 'Study',
+    count: 3
+  },
+  {
+    id: 16,
+    title: 'Add Search Functionality',
+    description: 'Allow users to search tasks by title and description.',
+    board: 'Kanban',
+    status: 'todo',
+    priority: 'Medium',
+    date: '2026-08-19',
+    labels: 'Coding',
+    count: 2
+  },
+  {
+    id: 17,
+    title: 'Improve Modal Validation',
+    description: 'Add proper validation for title, description, priority, and due date.',
+    board: 'Jira',
+    status: 'progress',
+    priority: 'Medium',
+    date: '2026-08-14',
+    labels: 'Coding',
+    count: 2
+  },
+  {
+    id: 18,
+    title: 'Study SQL Window Functions',
+    description: 'Practice ROW_NUMBER, RANK, DENSE_RANK, LAG, and LEAD.',
+    board: 'Personal',
+    status: 'todo',
+    priority: 'Medium',
+    date: '2026-08-20',
+    labels: 'Study',
+    count: 4
+  },
+  {
+    id: 19,
+    title: 'Complete Responsive Design',
+    description: 'Make FlowBoard work properly across desktop, tablet, and mobile screens.',
+    board: 'Kanban',
+    status: 'progress',
+    priority: 'High',
+    date: '2026-08-15',
+    labels: 'Coding',
+    count: 3
+  },
+  {
+    id: 20,
+    title: 'Finish FlowBoard Documentation',
+    description: 'Write project documentation explaining features, setup, and architecture.',
+    board: 'Jira',
+    status: 'done',
+    priority: 'Low',
+    date: '2026-08-10',
+    labels: 'Coding',
+    count: 2
   }
 ];

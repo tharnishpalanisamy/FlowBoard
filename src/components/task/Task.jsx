@@ -1,38 +1,79 @@
-import './Task.css' 
+import './Task.css'
 
-export default function Task(props) {  
+export default function Task() {
 
-    
-    return(
+    return (
         <div className="card">
-            <div className="card-header"> 
+
+            <div className="card-header">
 
                 <div className="header-left">
-                    <button className="task-check completeTask"  type="button"  >
-                        <i className="fa-solid fa-check text-dark tick " ></i>
+
+                    <button
+                        className="task-check completeTask"
+                        type="button"
+                    >
+                        <i className="fa-solid fa-check text-dark tick"></i>
                     </button>
 
-                    <div className="card-title">{props.title}</div> 
-                </div> 
+                    <div className="card-title">
+                        Complete React Course
+                    </div>
 
-                <button className="delete-task-button" onClick={()=>props.delete(props.title)}>
-                    <i className="fa-solid fa-trash"></i>
-                </button>
+                </div>
+
+                <div className="header-button-container">
+
+                    <button
+                        className="delete-task-button"
+                        type="button"
+                    >
+                        <i className="fa-solid fa-trash"></i>
+                    </button>
+
+                    <button
+                        className="edit-task-button"
+                        type="button"
+                    >
+                        <i className="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+
+                </div>
+
             </div>
+
             <div className="card-body">
-                <span className={`category ${props.category}`}>{props.category}</span> 
-                <span className={`priority ${props.priority}`}>{props.priority}</span> 
+
+                <span className="board Personal">
+                    Personal
+                </span>
+
+                <span className="priority High">
+                    High
+                </span>
+
             </div>
 
             <div className="card-footer">
+
                 <div className="date">
-                    <span><i className="fa-regular fa-calendar"></i></span> 
-                    {props.date}
-                </div> 
-                <div className="message">
-                    <span><i className="fa-regular fa-comment"></i></span> {props.count}
+                    <span>
+                        <i className="fa-regular fa-calendar"></i>
+                    </span>
+
+                    Aug 11
                 </div>
+
+                <div className="message">
+                    <span>
+                        <i className="fa-regular fa-comment"></i>
+                    </span>
+
+                    3
+                </div>
+
             </div>
+
         </div>
     )
 }
