@@ -89,6 +89,10 @@
     font-size: 13px;
 }
 
+.message{
+    display: flex; 
+    gap: 5px;
+}
 
 .card-footer{
     display: flex;

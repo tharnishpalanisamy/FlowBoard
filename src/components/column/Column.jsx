@@ -1,8 +1,21 @@
 import './Column.css'
 import Task from '../task/Task'
 
-export default function Column() {
-
+export default function Column(props) {
+    let tasks = props.tasks.filter(task => task.status == props.status)  
+    let tasksEl = tasks.map(task =>{
+        return <Task 
+        key = {task.id} 
+        id= {task.id}
+        title = {task.title } 
+        board = {task.board} 
+        priority = {task.priority} 
+        date = {task.date} 
+        count = {task.count} 
+        
+        
+        />
+    })
     return (
         <div className="column">
 
@@ -10,12 +23,12 @@ export default function Column() {
 
                 <div className="col-text">
 
-                    <p className="column-title todo-title">
-                        To Do
+                    <p className={`column-title todo-title ${props.status}-title `}>
+                        {props.title}
                     </p>
 
-                    <span className="column-count todo-count">
-                        3
+                    <span className={`column-count todo-count ${props.status}-count`}>
+                        {tasksEl.length}
                     </span>
 
                 </div>
@@ -24,7 +37,8 @@ export default function Column() {
 
                     <button
                         className="sidebar-link add-btn-top"
-                        type="button"
+                        type="button" 
+                        onClick={props.showModal} 
                     >
                         <span>
                             <i className="fa-solid fa-plus icon-plus icon add-icon"></i>
@@ -37,17 +51,16 @@ export default function Column() {
 
             <div className="col-body">
 
-                <Task />
-                <Task />
-                <Task />
+                {tasksEl}
 
             </div>
 
             <div className="col-footer">
 
                 <button
-                    className="add-task-button todo-button"
-                    type="button"
+                    className={`add-task-button todo-button ${props.status}-button`}
+                    type="button" 
+                    onClick={props.showModal} 
                 >
                     <span>
                         <i className="fa-solid fa-plus add-task-icon"></i>

@@ -1,6 +1,6 @@
 import './Task.css'
 
-export default function Task() {
+export default function Task(props) {
 
     return (
         <div className="card">
@@ -17,7 +17,7 @@ export default function Task() {
                     </button>
 
                     <div className="card-title">
-                        Complete React Course
+                        {props.title}
                     </div>
 
                 </div>
@@ -44,12 +44,12 @@ export default function Task() {
 
             <div className="card-body">
 
-                <span className="board Personal">
-                    Personal
+                <span className={`board ${props.board}`}>
+                    {props.board}
                 </span>
 
-                <span className="priority High">
-                    High
+                <span className={`priority ${props.priority}`}>
+                    {props.priority}
                 </span>
 
             </div>
@@ -61,7 +61,7 @@ export default function Task() {
                         <i className="fa-regular fa-calendar"></i>
                     </span>
 
-                    Aug 11
+                    {props.date}
                 </div>
 
                 <div className="message">
@@ -69,7 +69,7 @@ export default function Task() {
                         <i className="fa-regular fa-comment"></i>
                     </span>
 
-                    3
+                    {props.count}
                 </div>
 
             </div>

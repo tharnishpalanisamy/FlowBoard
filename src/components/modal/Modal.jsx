@@ -2,6 +2,34 @@ import './Modal.css'
 
 export default function Modal(props) {
 
+    function createTask(event){
+        event.preventDefault() 
+        let formData = new FormData(event.currentTarget) 
+        
+        let title = formData.get('title') 
+        let description = formData.get('description') 
+        let board = formData.get('board') 
+        let priority = formData.get('priority') 
+        let date = formData.get('date') 
+        let count = formData.get('count')  
+        let label = formData.get('label') 
+        let status = formData.get('status')
+
+        if(!title) {
+            alert('title cannot be empty') 
+            return  
+        }
+        
+        let newTask = { 
+            id : Date.now()  ,  
+            title , board , priority , date , count ,  label , status
+        } 
+
+        props.setTasks(prevTasks => [...prevTasks , newTask]) 
+        props.closeModal()
+
+        
+    }
     return (
         <div className="modal-overlay">
             <div className="modal">
@@ -13,14 +41,14 @@ export default function Modal(props) {
 
                     <button
                         className="modal-close-btn"
-                        onClick={props.close}
+                        onClick={props.closeModal}
                     >
                         <i className="fa-solid fa-xmark"></i>
                     </button>
                 </div>
 
                 <div className="modal-body">
-                    <form className="add-task-modal">
+                    <form className="add-task-modal" onSubmit={createTask}>
 
                         <div className="modal-title">
                             <label
@@ -190,7 +218,7 @@ export default function Modal(props) {
                             <button
                                 type="button"
                                 className="cancel-task-button"
-                                onClick={props.close}
+                                onClick={props.closeModal}
                             >
                                 Cancel
                             </button>
