@@ -12,7 +12,7 @@ export default function Column(props) {
         priority = {task.priority} 
         date = {task.date} 
         count = {task.count} 
-        
+        deleteTask = {deleteTask}
         
         />
     })

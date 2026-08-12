@@ -19,22 +19,21 @@ export default function Task(props) {
                     <div className="card-title">
                         {props.title}
                     </div>
-
                 </div>
 
                 <div className="header-button-container">
 
                     <button
                         className="delete-task-button"
-                        type="button"
+                        type="button" 
+                        onClick={prop}
                     >
                         <i className="fa-solid fa-trash"></i>
                     </button>
 
                     <button
                         className="edit-task-button"
-                        type="button"
-                    >
+                        type="button">
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                     </button>
 

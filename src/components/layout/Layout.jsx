@@ -17,6 +17,14 @@ export default function Layout() {
         setShowModal(true) 
         setStatus(status) 
     } 
+
+    function deleteTask(id) {
+        setTasks(prevTasks => prevTasks.map(task =>{
+            if(!task.id == id) {
+                return task
+            }
+        }))
+    }
     return (
         <>
             <div className="parent">
@@ -36,7 +44,8 @@ export default function Layout() {
                          title = 'To Do'  
                          status = 'todo'
                          tasks = {tasks} 
-                         setStatus = {setStatus}
+                         setStatus = {setStatus} 
+                         deleteTask = {deleteTask}
 
                          />
                         <Column 
@@ -45,6 +54,7 @@ export default function Layout() {
                          status = 'progress'
                          tasks = {tasks} 
                          setStatus = {setStatus}
+                         deleteTask = {deleteTask}
                         />
                         <Column 
                         showModal = {() => openModal('done') } 
@@ -53,6 +63,7 @@ export default function Layout() {
                          status = 'done'
                          tasks = {tasks} 
                          setStatus = {setStatus}
+                         deleteTask = {deleteTask}
                          />
  
                     </div>
