@@ -1,18 +1,20 @@
 import './Column.css'
 import Task from '../task/Task'
 
-export default function Column(props) {
-    let tasks = props.tasks.filter(task => task.status == props.status)  
+export default function Column(props) { 
+    console.log(props.tasks)    
+    let tasks = props.tasks.filter(task => task.status === props.status)  
     let tasksEl = tasks.map(task =>{
-        return <Task 
+        return < Task 
         key = {task.id} 
-        id= {task.id}
+        id= {task.id} 
         title = {task.title } 
         board = {task.board} 
         priority = {task.priority} 
         date = {task.date} 
         count = {task.count} 
-        deleteTask = {deleteTask}
+        deleteTask = {props.deleteTask}    
+        openEditModal = {props.openEditModal}
         
         />
     })
@@ -38,7 +40,7 @@ export default function Column(props) {
                     <button
                         className="sidebar-link add-btn-top"
                         type="button" 
-                        onClick={() => props.showModal(props.status)} 
+                        onClick={props.showModal} 
                     >
                         <span>
                             <i className="fa-solid fa-plus icon-plus icon add-icon"></i>
@@ -60,7 +62,7 @@ export default function Column(props) {
                 <button
                     className={`add-task-button todo-button ${props.status}-button`}
                     type="button" 
-                    onClick={() => props.showModal(props.status)} 
+                    onClick={props.showModal} 
                 >
                     <span>
                         <i className="fa-solid fa-plus add-task-icon"></i>

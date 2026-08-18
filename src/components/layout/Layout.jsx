@@ -13,17 +13,29 @@ export default function Layout() {
 
     const [tasks , setTasks] = useState(tasksData)  
 
+    const [selectedTask , setSelectedTask] = useState(null)
+
     function openModal(status) {
         setShowModal(true) 
         setStatus(status) 
     } 
 
+    function openEditModal(task) {
+        setShowModal(true) 
+        setStatus(task.status) 
+        setSelectedTask(task.id)
+
+    }
+
+    function loadData(id) {
+        let task = tasks.find(task => task.id === id) 
+        
+    }
+
     function deleteTask(id) {
-        setTasks(prevTasks => prevTasks.map(task =>{
-            if(!task.id == id) {
-                return task
-            }
-        }))
+        setTasks(prevTasks =>
+            prevTasks.filter(task => task.id !== id)
+        )
     }
     return (
         <>
@@ -40,39 +52,43 @@ export default function Layout() {
                     <div className="columns">
 
                         <Column
-                         showModal = {() => openModal('todo') }  
-                         title = 'To Do'  
-                         status = 'todo'
-                         tasks = {tasks} 
-                         setStatus = {setStatus} 
-                         deleteTask = {deleteTask}
+                        showModal = {() => openModal('todo') }  
+                        title = 'To Do'  
+                        status = 'todo'
+                        tasks = {tasks} 
+                        setStatus = {setStatus} 
+                        deleteTask = {deleteTask} 
+                        openEditModal = {openEditModal}
 
-                         />
+                        />
                         <Column 
                         showModal = {() => openModal('progress') } 
                         title = 'In progress'  
-                         status = 'progress'
-                         tasks = {tasks} 
-                         setStatus = {setStatus}
-                         deleteTask = {deleteTask}
+                        status = 'progress'
+                        tasks = {tasks} 
+                        setStatus = {setStatus}
+                        deleteTask = {deleteTask}
+                        openEditModal = {openEditModal}
                         />
                         <Column 
                         showModal = {() => openModal('done') } 
                         
                         title = 'Done'  
-                         status = 'done'
-                         tasks = {tasks} 
-                         setStatus = {setStatus}
-                         deleteTask = {deleteTask}
-                         />
- 
+                        status = 'done'
+                        tasks = {tasks} 
+                        setStatus = {setStatus}
+                        deleteTask = {deleteTask}
+                        openEditModal = {openEditModal}
+                        />
+
                     </div>
 
                     {showModal && <Modal  
                         status = {status}
                         closeModal = {()=> setShowModal(false)} 
                         setTasks = {setTasks}  
-                        tasks = {tasks}
+                        tasks = {tasks} 
+                        editTask = {selectedTask}
                     />}
 
                 </div>

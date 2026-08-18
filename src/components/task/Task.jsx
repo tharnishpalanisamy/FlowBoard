@@ -26,14 +26,14 @@ export default function Task(props) {
                     <button
                         className="delete-task-button"
                         type="button" 
-                        onClick={prop}
+                        onClick={() => props.deleteTask(props.id)}
                     >
                         <i className="fa-solid fa-trash"></i>
                     </button>
 
                     <button
                         className="edit-task-button"
-                        type="button">
+                        type="button" onClick={()=>props.openEditModal(props.id) }> 
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                     </button>
 
