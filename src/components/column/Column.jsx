@@ -2,7 +2,6 @@ import './Column.css'
 import Task from '../task/Task'
 
 export default function Column(props) { 
-    console.log(props.tasks)    
     let tasks = props.tasks.filter(task => task.status === props.status)  
     let tasksEl = tasks.map(task =>{
         return < Task 
@@ -15,6 +14,8 @@ export default function Column(props) {
         count = {task.count} 
         deleteTask = {props.deleteTask}    
         openEditModal = {props.openEditModal}
+        description = {task.description} 
+        status = {task.status} 
         
         />
     })

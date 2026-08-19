@@ -1,9 +1,13 @@
 import './Modal.css'
 
 export default function Modal(props) {
+    console.log( 'edit task' , props.editTask);
+
 
     function createTask(event){
         event.preventDefault() 
+        
+        
         let formData = new FormData(event.currentTarget) 
         
         let title = formData.get('title') 
@@ -39,13 +43,67 @@ export default function Modal(props) {
 
         
     }
+
+    function editTask(event , id) { 
+
+        event.preventDefault() 
+        
+        
+        let formData = new FormData(event.currentTarget) 
+        
+        let title = formData.get('title') 
+        let description = formData.get('description') 
+        let board = formData.get('board') 
+        let priority = formData.get('priority') 
+        let date = formData.get('date') 
+        let count = formData.get('count')  
+        let label = formData.get('label') 
+        let status = formData.get('status')
+
+        if(!title) {
+            alert('title cannot be empty') 
+            return  
+        }
+        let editedTask = {
+            id : id , title , description , board , priority , date , count , label , status 
+        }
+        // for (let i = 0 ; i < props.tasks.length ; i++) { 
+            
+        //     let task = props.tasks[i] 
+        //     if ( i == Number(id) -1 ) {
+        //         continue 
+        //     }
+        //     if (task.title == title) {
+        //         alert('title already nooo exists') 
+        //         return 
+        //     }
+        // }
+        
+
+        props.setTasks(prevTasks =>(
+            prevTasks.map(task =>{
+                if (task.id === id) {
+                    return editedTask
+                }
+                return task 
+            })
+        )) 
+
+        props.closeModal() 
+    }
+
+
+
+
+
+
     return (
         <div className="modal-overlay">
             <div className="modal">
 
                 <div className="modal-header">
                     <h3 className="header-title">
-                        Add New Task
+                        {props.editTask ? 'Edit Task' :'Add New Task'}
                     </h3>
 
                     <button
@@ -57,7 +115,8 @@ export default function Modal(props) {
                 </div>
 
                 <div className="modal-body">
-                    <form className="add-task-modal" onSubmit={createTask}>
+                    <form className="add-task-modal" onSubmit={props.editTask ? (event)=> editTask(event , props.editTask.id) 
+                        : createTask}>
 
                         <div className="modal-title">
                             <label
@@ -73,6 +132,7 @@ export default function Modal(props) {
                                 name="title"
                                 id="title"
                                 placeholder="e.g. Learn React Context API"
+                                defaultValue={props.editTask ? props.editTask.title : '' }
                             />
                         </div>
 
@@ -90,7 +150,8 @@ export default function Modal(props) {
                                 className="description-input"
                                 placeholder="What Needs to be Done?"
                                 name="description"
-                                id="description"
+                                id="description" 
+                                defaultValue={props.editTask?props.editTask.description:''}
                             />
                         </div>
 
@@ -107,7 +168,8 @@ export default function Modal(props) {
                                 <select
                                     name="board"
                                     id="board"
-                                    className="board-select"
+                                    className="board-select" 
+                                    defaultValue={props.editTask ?props.editTask.board : null } 
                                 >
                                     <option value="Personal">
                                         Personal
@@ -135,7 +197,7 @@ export default function Modal(props) {
                                     name="status"
                                     id="status"
                                     className="status-select" 
-                                    defaultValue={props.status}
+                                    defaultValue={props.editTask ? props.editTask.status : props.status}
                                 >
                                     <option value="todo">
                                         todo
@@ -167,6 +229,7 @@ export default function Modal(props) {
                                     name="priority"
                                     id="priority"
                                     className="priority-select"
+                                    defaultValue={props.editTask ?props.editTask.priority : null } 
                                 >
                                     <option value="High">
                                         High
@@ -195,6 +258,7 @@ export default function Modal(props) {
                                     className="date-input"
                                     name="date"
                                     id="date"
+                                    defaultValue={props.editTask ?props.editTask.date : null } 
                                 />
                             </div>
 
@@ -212,6 +276,7 @@ export default function Modal(props) {
                                 name="label"
                                 id="label"
                                 className="label-select"
+                                defaultValue={props.editTask ?props.editTask.label : null } 
                             >
                                 <option value="Study">
                                     Study
@@ -237,7 +302,7 @@ export default function Modal(props) {
                                 type="submit"
                                 className="create-task-button"
                             >
-                                Create Task
+                                {props.editTask ? 'Edit Task' : 'Create Task'}
                             </button>
 
                         </div>

@@ -18,12 +18,13 @@ export default function Layout() {
     function openModal(status) {
         setShowModal(true) 
         setStatus(status) 
+        setSelectedTask(null)
     } 
 
     function openEditModal(task) {
         setShowModal(true) 
         setStatus(task.status) 
-        setSelectedTask(task.id)
+        setSelectedTask(task)
 
     }
 
@@ -37,6 +38,17 @@ export default function Layout() {
             prevTasks.filter(task => task.id !== id)
         )
     }
+
+    // function editTask(id , editedTask) {
+    //     setTasks(prevTasks =>{
+    //         prevTasks.map(task =>{
+    //             if (task.id === id) {
+    //                 return editedTask
+    //             }
+    //             return task 
+    //         })
+    //     })
+    // }
     return (
         <>
             <div className="parent">

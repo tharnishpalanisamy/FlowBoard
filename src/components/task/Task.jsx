@@ -1,7 +1,7 @@
 import './Task.css'
 
 export default function Task(props) {
-
+    
     return (
         <div className="card">
 
@@ -33,7 +33,7 @@ export default function Task(props) {
 
                     <button
                         className="edit-task-button"
-                        type="button" onClick={()=>props.openEditModal(props.id) }> 
+                        type="button" onClick={()=>props.openEditModal(props) }> 
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                     </button>
 
