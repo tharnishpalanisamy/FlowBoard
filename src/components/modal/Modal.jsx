@@ -67,18 +67,6 @@ export default function Modal(props) {
         let editedTask = {
             id : id , title , description , board , priority , date , count , label , status 
         }
-        // for (let i = 0 ; i < props.tasks.length ; i++) { 
-            
-        //     let task = props.tasks[i] 
-        //     if ( i == Number(id) -1 ) {
-        //         continue 
-        //     }
-        //     if (task.title == title) {
-        //         alert('title already nooo exists') 
-        //         return 
-        //     }
-        // }
-        
 
         props.setTasks(prevTasks =>(
             prevTasks.map(task =>{

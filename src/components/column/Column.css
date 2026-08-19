@@ -1,6 +1,6 @@
 .column{
-    background: #0c1221;  
-    border: 1px solid #1C232C;  
+    background: #0F172A;  
+    border: 2px solid #1C232C;  
     color: white; 
     width: 380px;  
     margin-top: 10px;
@@ -9,7 +9,8 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: column; 
-    justify-content: start;
+    justify-content: start; 
+    cursor: grab;
      
 }
 
