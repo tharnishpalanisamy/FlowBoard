@@ -54,7 +54,11 @@
   --space-2xl: 32px;
 }
 
-
+a.sidebar-link{
+    text-decoration: none;  
+    color: white;
+    
+}
 
 .sidebar{
     background: #0A121D; 
@@ -80,7 +84,7 @@
     margin-top: 13px;
 }
 .active{
-    color:#8D70F0; 
+    color:#8D70F0 !important; 
     background: #15192C; 
 
 }
@@ -133,4 +137,12 @@
 
 .boards{
     border-bottom: 2px solid  #131A24;
+}
+
+.personal-icon{
+    color: rgb(56, 139, 255);
+}
+
+.house-icon{
+    color: #8970F0;
 }
