@@ -1,7 +1,17 @@
 import './SideBar.css' 
+import { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import BoardContext from '../../context/addModalContext/BoardContext'
 
 export default function SideBar(){
+
+    const {showAddModal , setShowAddModal} = useContext(BoardContext)
+
+    function handleAddBoard(){
+        setShowAddModal(true) 
+    }
+
+
     return(
         <aside className='sidebar'>
             <div className="logo-contanier">
@@ -17,10 +27,10 @@ export default function SideBar(){
                 <span className="sidebar-title">BOARDS</span> 
                 <div className="boards-items">
                     <NavLink to='personal' className="sidebar-link"><span><i className="fa-solid fa-table-cells-large personal-icon icon"></i></span> Personal</NavLink>
-                    <NavLink to='work' className="sidebar-link"><span><i className="fa-solid fa-briefcase icon work-icon"></i></span> Work</NavLink>
+                    {/* <NavLink to='work' className="sidebar-link"><span><i className="fa-solid fa-briefcase icon work-icon"></i></span> Work</NavLink>
                     <NavLink to='study' className="sidebar-link"><span><i className="fa-solid fa-graduation-cap icon study-icon"></i></span> Study</NavLink>
-                    <NavLink to='shopping' className="sidebar-link"><span><i className="fa-solid fa-cart-shopping icon shopping-icon"></i></span> Shopping</NavLink>
-                    <NavLink to='newboard' className="sidebar-link"><span><i className="fa-solid fa-plus icon-plus icon add-icon"></i></span> New Board</NavLink>
+                    <NavLink to='shopping' className="sidebar-link"><span><i className="fa-solid fa-cart-shopping icon shopping-icon"></i></span> Shopping</NavLink> */}
+                    <button onClick={handleAddBoard} to='newboard' className="sidebar-button sidebar-link"><span><i className="fa-solid fa-plus icon-plus icon add-icon"></i></span> New Board</button>
                 </div>
             </div> 
 
@@ -33,6 +43,8 @@ export default function SideBar(){
                     <NavLink to={'trash'} className="sidebar-link"><span><i className="fa-regular fa-trash-can icon"></i></span> Trash</NavLink>
                 </div>
             </div>
-        </aside>
+        </aside> 
+
+        
     )
 }   

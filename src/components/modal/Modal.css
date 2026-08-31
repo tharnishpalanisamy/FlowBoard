@@ -39,7 +39,7 @@
 
 
 .modal-title{  
-    color: #E5E6E9;
+    color: #86878C;
     padding: 10px 0px;
     display: flex;
     flex-direction: column; 
@@ -60,7 +60,7 @@
     display: flex; 
     flex-direction: column;
     gap: 7px; 
-    color: #E5E6E9;
+    color: #86878C;
 }
 
 .description-input{

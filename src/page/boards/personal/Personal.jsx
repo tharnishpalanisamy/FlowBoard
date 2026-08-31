@@ -23,6 +23,7 @@ export default function Personal(){
                 { id: 'done', title: 'Done' }
             ]
     )
+    
 
     useEffect(() => {
         localStorage.setItem('columns', JSON.stringify(columns))

@@ -1,0 +1,259 @@
+.deleted-task-container {
+    width: 100%;
+    overflow-x: auto;
+
+    background: #091326;
+    border: 1px solid #273553;
+    border-radius: 10px;
+}
+
+/* TABLE */
+
+.deleted-task-container table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #e2e8f0;
+    min-width: 800px;
+}
+
+/* HEADER */
+
+.deleted-task-container thead {
+    background: #111a30;
+}
+
+.deleted-task-container th {
+    height: 48px;
+    padding: 0 25px;
+
+    text-align: left;
+
+    color: #a78bfa;
+    font-size: 13px;
+    font-weight: 600;
+
+    border-bottom: 1px solid #273553;
+}
+
+/* COLUMN WIDTHS */
+
+.deleted-task-container th:first-child {
+    width: 55px;
+}
+
+.deleted-task-container th:nth-child(2) {
+    width: 42%;
+}
+
+.deleted-task-container th:nth-child(3) {
+    width: 18%;
+}
+
+.deleted-task-container th:nth-child(4) {
+    width: 20%;
+}
+
+.deleted-task-container th:last-child {
+    width: 130px;
+}
+
+/* ROW */
+
+.deleted-task-container tbody tr {
+    height: 78px;
+
+    border-bottom: 1px solid #1c2942;
+
+    transition: background 0.2s ease;
+}
+
+.deleted-task-container tbody tr:last-child {
+    border-bottom: none;
+}
+
+.deleted-task-container tbody tr:hover {
+    background: #101b31;
+}
+
+/* CELLS */
+
+.deleted-task-container td {
+    padding: 12px 25px;
+
+    font-size: 14px;
+    color: #dbe3ef;
+}
+
+/* CHECKBOX */
+
+.deleted-task-container input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+
+    appearance: none;
+
+    border: 2px solid #77839a;
+    border-radius: 4px;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.deleted-task-container input[type="checkbox"]:checked {
+    background: #8b5cf6;
+    border-color: #8b5cf6;
+}
+
+/* TASK */
+
+.deleted-task-container td:nth-child(2) p {
+    margin: 0 0 7px;
+
+    color: #e5e7eb;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* PRIORITY BADGE */
+
+.deleted-task-priority {
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 12px;
+
+    background: rgba(239, 68, 68, 0.14);
+    color: #fb7185;
+
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* BOARD */
+
+.deleted-task-container td:nth-child(3) {
+    color: #cbd5e1;
+}
+
+/* DATE */
+
+.deleted-task-container td:nth-child(4) {
+    color: #dbe3ef;
+}
+
+/* ACTIONS */
+
+.deleted-task-container td:last-child {
+    white-space: nowrap;
+}
+
+.deleted-task-container td:last-child i {
+    width: 42px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 8px;
+
+    border: 1px solid #293553;
+    border-radius: 7px;
+
+    background: #121c33;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+/* RESTORE */
+
+.deleted-task-container .fa-recycle {
+    color: #a855f7;
+}
+
+.deleted-task-container .fa-recycle:hover {
+    background: rgba(168, 85, 247, 0.12);
+}
+
+/* DELETE */
+
+.deleted-task-container .fa-trash {
+    color: #ef4444;
+
+    border-color: #47536d;
+}
+
+.deleted-task-container .fa-trash:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.deleted-task-container input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+
+    appearance: none;
+
+    border: 2px solid #77839a;
+    border-radius: 4px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.deleted-task-container input[type="checkbox"]:checked {
+    background: #8b5cf6;
+    border-color: #8b5cf6;
+}
+
+.deleted-task-container input[type="checkbox"]:checked::after {
+    content: "✓";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* LOW */
+.deleted-task-priority.low {
+    background: rgba(34, 197, 94, 0.14);
+    color: #4ade80;
+}
+
+/* MEDIUM */
+.deleted-task-priority.medium {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+}
+
+/* HIGH */
+.deleted-task-priority.high {
+    background: rgba(239, 68, 68, 0.14);
+    color: #fb7185;
+}
+
+.deleted-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.deleted-title p {
+    margin: 0;
+    line-height: 1.2;
+}
+

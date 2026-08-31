@@ -1,0 +1,283 @@
+.add-modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.add-modal {
+    width: clamp(300px, 480px, 480px);
+
+    background: #18202A;
+    margin: 80px auto 0 auto;
+    padding: 20px;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    color: whitesmoke; 
+
+    border: 2px solid #2D3541;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.add-modal-header{
+    color:#5A3BDF ; 
+    font-size: 18px; 
+    font-weight: 600;  
+    display: flex; 
+    justify-content: space-between;
+}
+
+
+.add-modal-close-btn{
+    border: none; 
+    background: transparent;  
+    color: whitesmoke; 
+    font-size: 22px;
+
+}
+
+
+.board-name-container{
+    display: flex; 
+    flex-direction: column; 
+    margin: 10px 7px;
+}
+
+.board-color{
+    display: flex; 
+    flex-direction: column;
+    margin: 10px 7px;
+}
+
+.board-icon{
+    display: flex; 
+    flex-direction: column;
+    margin: 10px 7px;
+}
+
+.board-input{
+    padding: 10px; 
+    border-radius: 10px; 
+    background: transparent; 
+    border: 2px solid #2D3541;  
+    color: whitesmoke;
+}
+
+.add-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+/* Labels */
+
+.board-name-container label,
+.board-color label,
+.board-icon label {
+    color: #86878C;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+
+/* Inputs + Selects */
+
+.board-input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 10px;
+
+    border-radius: 8px;
+    border: 2px solid #2D3541;
+
+    background: #18202A;
+    color: #E5E6E9;
+
+    font-size: 15px;
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.board-input::placeholder {
+    color: #86878C;
+}
+
+
+/* Focus */
+
+.board-input:focus {
+    border-color: #397add;
+}
+
+
+/* Select */
+
+.board-input option {
+    background: #18202A;
+    color: #E5E6E9;
+}
+
+
+/* Buttons */
+
+.board-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.board-cancel-button,
+.board-add-button {
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* Cancel */
+
+.board-cancel-button {
+    background: transparent;
+
+    border: 2px solid #2D3541;
+    color: #E5E6E9;
+}
+
+.board-cancel-button:hover {
+    background: #222B36;
+}
+
+
+/* Create */
+
+.board-add-button {
+    background: #5A3BDF;
+
+    border: 2px solid #5A3BDF;
+    color: white;
+}
+
+.board-add-button:hover {
+    background: #6849e5;
+    border-color: #6849e5;
+}
+
+.board-add-button:active,
+.board-cancel-button:active {
+    transform: scale(0.97);
+}
+
+
+/* Modal animation */
+
+.add-modal {
+    animation: addModalEnter 0.2s ease-out;
+}
+
+@keyframes addModalEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .add-modal {
+        width: calc(100% - 40px);
+        margin-top: 50px;
+    }
+
+    .board-button-container {
+        gap: 10px;
+    }
+
+    .board-cancel-button,
+    .board-add-button {
+        flex: 1;
+    }
+}
+
+
+.color-options {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    border: 2px solid #2D3541;
+    /* border: none; */
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.12);
+    border-color: #E5E6E9;
+}
+
+.color-option-active {
+    transform: scale(1.12);
+    border-color: #E5E6E9;
+}
+
+.color-option.green {
+    background: #22c55e;
+}
+
+.color-option.blue {
+    background: #3b82f6;
+}
+
+.color-option.red {
+    background: #ef4444;
+}
+
+.color-option.yellow {
+    background: #eab308;
+}
+
+.color-option.purple {
+    background: #8b5cf6;
+}
+
+.color-option.orange {
+    background: #f97316;
+}

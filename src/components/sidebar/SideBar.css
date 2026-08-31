@@ -146,3 +146,9 @@ a.sidebar-link{
 .house-icon{
     color: #8970F0;
 }
+
+.sidebar-button{
+    border: none; 
+    background: transparent; 
+    color: whitesmoke;
+}

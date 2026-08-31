@@ -6,16 +6,26 @@ import {createBrowserRouter , createRoutesFromElements, Route , RouterProvider} 
 import './App.css'   
 import Dashboard from './page/dashboard/Dashboard' 
 import Trash from './page/trash/Trash' 
-import Personal from './page/boards/personal/Personal'
+import Personal from './page/boards/personal/Personal' 
+import Settings from './page/settings/Settings'
+import Analytics from './page/analytics/Analytics' 
+import Calender from './page/calender/Calender' 
+import AddBoardModal from './components/boardModal/AddBoardModal' 
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element = {<Layout/>}>
         <Route index element={<Dashboard/>}/> 
+        
+        {/* Boards */} 
+        <Route path='personal' element = {<Personal/>} /> 
+
+
+        {/* others */} 
+        <Route path='calender' element={<Calender/>} /> 
+        <Route path='analytics' element={<Analytics/>} /> 
+        <Route path='settings' element={<Settings/>} /> 
         <Route path='trash' element={<Trash/>} /> 
 
-
-        {/* Boards */} 
-        <Route path='personal' element = {<Personal/>} />
 
 
     </Route>
