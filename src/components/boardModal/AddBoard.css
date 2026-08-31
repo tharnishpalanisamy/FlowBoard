@@ -65,6 +65,27 @@
     margin: 10px 7px;
 }
 
+.icon-options{ 
+    margin-top: 10px;
+    display: flex; 
+    gap:25px;  
+}
+
+.icon-button{ 
+    border: none; 
+    background: transparent;
+    transition: 0.3s; 
+    color: #397add; 
+} 
+
+.icon-button:hover{
+    transform: scale(1.2);
+}
+
+.icon-button i{
+    font-size: 20px;
+}
+
 .board-input{
     padding: 10px; 
     border-radius: 10px; 
@@ -280,4 +301,61 @@
 
 .color-option.orange {
     background: #f97316;
+}
+
+.color-option.pink {
+    background: pink;
+}
+
+.board-icon {
+    display: flex;
+    flex-direction: column;
+    margin: 18px 7px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.icon-options {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.icon-button {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+
+    background: #f8fafc;
+    color: #64748b;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.icon-button i {
+    font-size: 18px;
+}
+
+.icon-button:hover {
+    border-color: #397add;
+    color: #397add;
+    background: #eff6ff;
+    transform: translateY(-2px);
+}
+
+.icon-button:active {
+    transform: scale(0.95);
 }

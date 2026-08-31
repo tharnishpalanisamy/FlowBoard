@@ -37,26 +37,29 @@ export default function AddBoardModal(){
                             <label>Choose Color</label>
 
                             <div className="color-options">
-                                <button className="color-option green" title="Green" onClick={(event) => selectColor(event)}></button>
-                                <button className="color-option blue" title="Blue" onClick={(event) => selectColor(event)}></button>
-                                <button className="color-option red" title="Red" onClick={(event) => selectColor(event)}></button>
-                                <button className="color-option yellow" title="Yellow" onClick={(event) => selectColor(event)}></button>
-                                <button className="color-option purple" title="Purple" onClick={(event) => selectColor(event)}></button>
-                                <button className="color-option orange" title="Orange" onClick={(event) => selectColor(event)}></button>
+                                <button className={`color-option green ${selectedColor == 'green' ? 'color-option-active' : ''}`} title="Green" onClick={()=>setSelectedColor('green')}></button>
+                                <button className={`color-option blue ${selectedColor == 'blue' ? 'color-option-active' : ''}`} title="Blue" onClick={()=>setSelectedColor('blue')}></button>
+                                <button className={`color-option red ${selectedColor == 'red' ? 'color-option-active' : ''}`} title="Red" onClick={()=>setSelectedColor('red')}></button>
+                                <button className={`color-option yellow ${selectedColor == 'yellow' ? 'color-option-active' : ''}`} title="Yellow" onClick={()=>setSelectedColor('yellow')}></button>
+                                <button className={`color-option purple ${selectedColor == 'purple' ? 'color-option-active' : ''}`} title="Purple" onClick={()=>setSelectedColor('purple')}></button>
+                                <button className={`color-option orange ${selectedColor == 'orange' ? 'color-option-active' : ''}`} title="Orange" onClick={()=>setSelectedColor('orange')}></button>
+                                <button className={`color-option pink ${selectedColor == 'pink' ? 'color-option-active' : ''}`} title="Pink" onClick={()=>setSelectedColor('pink')}></button>
+                                <button className={`color-option pink ${selectedColor == 'pink' ? 'color-option-active' : ''}`} title="Pink" onClick={()=>setSelectedColor('pink')}></button>
+
+
                             </div>
                         </div>
 
                         <div className="board-icon">
                             <label htmlFor="icon">Choose Icon</label>
-                            <select name="icon" id="icon" className='board-input'> 
-                                <option value="">Select an Icon</option>
-                                <option value="house">🏠</option>
-                                <option value="user">👤</option>
-                                <option value="cart">🛒</option>
-                                <option value="book">📖</option>
-                                <option value="school">🏫</option>
-                                <option value="graduation">🎓</option>
-                            </select> 
+                            <div className="icon-options">  
+                                <button className="icon-button"><i className="fa-solid fa-school"></i></button>
+                                <button className="icon-button"><i className="fa-solid fa-book-open"></i></button>
+                                <button className="icon-button"><i className="fa-solid fa-user"></i></button>   
+                                <button className="icon-button"><i className="fa-solid fa-house"></i></button>
+                                <button className="icon-button"><i className="fa-solid fa-dumbbell"></i></button> 
+                                <button className="icon-button"><i className="fa-solid fa-desktop"></i></button> 
+                            </div>
 
                         </div>
 
