@@ -80,10 +80,11 @@ export default function Modal(props) {
         props.closeModal() 
     }
 
+    function renderOptionBoards(){
+        let options  = JSON.parse(localStorage.getItem('boards') ) || [{boardName:'personal'}] 
 
-
-
-
+        return 
+    }
 
     return (
         <div className="modal-overlay">

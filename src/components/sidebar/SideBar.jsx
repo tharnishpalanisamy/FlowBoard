@@ -3,9 +3,37 @@ import { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import BoardContext from '../../context/addModalContext/BoardContext'
 
+
+
+const ICONS = {
+    user: "fa-solid fa-user",
+    briefcase: "fa-solid fa-briefcase",
+    school: "fa-solid fa-graduation-cap",
+    book: "fa-solid fa-book-open",
+    house: "fa-solid fa-house",
+    dumbbell: "fa-solid fa-dumbbell",
+    desktop: "fa-solid fa-desktop",
+    code: "fa-solid fa-code"
+}
+
 export default function SideBar(){
 
     const {showAddModal , setShowAddModal} = useContext(BoardContext)
+
+    function renderBoards(){
+        let boards = JSON.parse(localStorage.getItem('boards') ) || [{boardName : 'Personal' , color:'puple' , icon: 'user'}] 
+
+        return boards.map(board =>{
+            return (
+                <NavLink key={board.boardName} to={`boards/${board.boardName.toLowerCase()}`} className={'sidebar-link'}>
+                    <span><i className={`${ICONS[board.icon]} icon ${board.color}`}></i></span> 
+                    {board.boardName}
+                </NavLink>
+            )
+        } )
+    }
+
+    let elements = renderBoards() 
 
     function handleAddBoard(){
         setShowAddModal(true) 
@@ -26,7 +54,8 @@ export default function SideBar(){
             <div className="boards">
                 <span className="sidebar-title">BOARDS</span> 
                 <div className="boards-items">
-                    <NavLink to='personal' className="sidebar-link"><span><i className="fa-solid fa-table-cells-large personal-icon icon"></i></span> Personal</NavLink>
+                    {/* <NavLink to='personal' className="sidebar-link"><span><i className="fa-solid fa-table-cells-large personal-icon icon"></i></span> Personal</NavLink> */}
+                    {elements}
                     {/* <NavLink to='work' className="sidebar-link"><span><i className="fa-solid fa-briefcase icon work-icon"></i></span> Work</NavLink>
                     <NavLink to='study' className="sidebar-link"><span><i className="fa-solid fa-graduation-cap icon study-icon"></i></span> Study</NavLink>
                     <NavLink to='shopping' className="sidebar-link"><span><i className="fa-solid fa-cart-shopping icon shopping-icon"></i></span> Shopping</NavLink> */}

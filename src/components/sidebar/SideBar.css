@@ -152,3 +152,15 @@ a.sidebar-link{
     background: transparent; 
     color: whitesmoke;
 }
+
+/* Board icon colors */
+
+
+.icon.purple { color: #8B5CF6; }
+.icon.blue   { color: #3B82F6; }
+.icon.cyan   { color: #06B6D4; }
+.icon.green  { color: #10B981; }
+.icon.amber  { color: #F59E0B; }
+.icon.orange { color: #F97316; }
+.icon.pink   { color: #EC4899; }
+.icon.red    { color: #EF4444; }

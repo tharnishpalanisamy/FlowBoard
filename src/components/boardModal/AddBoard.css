@@ -42,9 +42,11 @@
     border: none; 
     background: transparent;  
     color: whitesmoke; 
-    font-size: 22px;
+    font-size: 22px; 
 
 }
+
+
 
 
 .board-name-container{
@@ -159,7 +161,7 @@
     justify-content: flex-end;
     gap: 15px;
 
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .board-cancel-button,
@@ -279,32 +281,13 @@
     border-color: #E5E6E9;
 }
 
-.color-option.green {
-    background: #22c55e;
+.color-option:active {
+    transform: scale(0.95);
 }
 
-.color-option.blue {
-    background: #3b82f6;
-}
 
-.color-option.red {
-    background: #ef4444;
-}
-
-.color-option.yellow {
-    background: #eab308;
-}
-
-.color-option.purple {
-    background: #8b5cf6;
-}
-
-.color-option.orange {
-    background: #f97316;
-}
-
-.color-option.pink {
-    background: pink;
+.add-color{
+    color: #64748b;
 }
 
 .board-icon {
@@ -349,13 +332,28 @@ label {
     font-size: 18px;
 }
 
-.icon-button:hover {
+.icon-button:hover , .icon-button-active{
     border-color: #397add;
     color: #397add;
     background: #eff6ff;
     transform: translateY(-2px);
 }
 
+
+
 .icon-button:active {
     transform: scale(0.95);
+}
+
+.color-option.purple { background: #8B5CF6; }
+.color-option.blue   { background: #3B82F6; }
+.color-option.cyan   { background: #06B6D4; }
+.color-option.green  { background: #10B981; }
+.color-option.amber  { background: #F59E0B; }
+.color-option.orange { background: #F97316; }
+.color-option.pink   { background: #EC4899; }
+.color-option.red    { background: #EF4444; }
+
+.board-color{
+    margin-top: 20px;
 }

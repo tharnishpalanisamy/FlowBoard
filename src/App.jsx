@@ -11,13 +11,14 @@ import Settings from './page/settings/Settings'
 import Analytics from './page/analytics/Analytics' 
 import Calender from './page/calender/Calender' 
 import AddBoardModal from './components/boardModal/AddBoardModal' 
+import TaskManagement from './components/taskManagement/TaskManagement' 
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element = {<Layout/>}>
-        <Route index element={<Dashboard/>}/> 
+        <Route index element={<Personal/>}/> 
         
         {/* Boards */} 
-        <Route path='personal' element = {<Personal/>} /> 
+        <Route path='boards/:board' element = {<TaskManagement/>} /> 
 
 
         {/* others */} 
