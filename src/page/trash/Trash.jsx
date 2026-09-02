@@ -6,14 +6,13 @@ export default function Trash(){
 
     const[selectedTasks , setSelectedTasks] = useState([]) 
     
-    function handleSelectAll(){ 
-        if(selectedTasks.length == deletedTasks.length) {
-            setSelectedTasks([])
+    function handleSelectAll(){   
+        if(selectedTasks.length == deletedTasks.length  ) { 
+            setSelectedTasks([]) 
         } 
         else{
             const newArr = [] 
-            deletedTasks.forEach(task => newArr.push(task.id)) 
-            setSelectedTasks(newArr)
+            setSelectedTasks(deletedTasks.map(task => task.id))
         }
          
     } 
@@ -34,7 +33,12 @@ export default function Trash(){
             <table>
                 <thead>
                     <tr>
-                        <th><input type="checkbox" onChange={handleSelectAll} /></th>
+                        <th><input type="checkbox" onChange={handleSelectAll} 
+                                        checked={
+                                deletedTasks.length > 0 &&
+                                selectedTasks.length === deletedTasks.length
+                            }
+                    /></th>
                         <th>Task</th>
                         <th>Board</th>
                         <th>DeletedOn</th>

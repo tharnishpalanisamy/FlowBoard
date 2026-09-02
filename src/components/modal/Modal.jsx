@@ -10,6 +10,8 @@ export default function Modal(props) {
     const board = params.board  
     console.log('bioard' , board);
     
+    console.log('props' , props);
+    
     
     function createTask(event){
         event.preventDefault() 
@@ -260,7 +262,7 @@ export default function Modal(props) {
                                 name="status"
                                 id="status"
                                 className="status-select"
-                                defaultValue={props.editTask ?props.editTask.label : null } 
+                                defaultValue={props.editTask ?props.editTask.status : props.status } 
                             >
                                 <option value="todo">
                                     todo
