@@ -1,9 +1,10 @@
 import Toolbar from '../toolbar/Toolbar'
 import Column from '../column/Column'
-import Modal from '../modal/Modal'
+import Modal from '../modal/modal'
 import { tasksData } from '../../data/tasks'
-import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useParams } from 'react-router-dom' 
+import TaskContext from '../../context/taskContext/TaskContext'
 
 const DRAG_THRESHOLD = 5 // px of movement before a "click" becomes a "drag"
 
@@ -13,9 +14,7 @@ export default function TaskManagement(){
     
     const [showModal, setShowModal] = useState(false) 
     const [status, setStatus] = useState('todo')
-    const [tasks, setTasks] = useState(
-        localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : tasksData
-    )
+    const {tasks, setTasks} = useContext(TaskContext) 
     const boardTasks = tasks.filter(
         task => task.board === boardType 
     )
@@ -179,7 +178,8 @@ function moveColumn(draggedId, targetId) {
 
     function deleteTask(id) {
         setTasks(prevTasks => prevTasks.filter(task => task.id !== id))
-        let task = tasks.find(task => task.id == id ) 
+        let task = tasks.find(task => task.id == id )  
+        task = {...task , deletedOn : new Date()}
         let deletedTasks = JSON.parse(localStorage.getItem('deletedTasks')) || []  
         deletedTasks.unshift(task) 
         localStorage.setItem('deletedTasks' , JSON.stringify(deletedTasks))

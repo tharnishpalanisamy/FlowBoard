@@ -25,8 +25,8 @@ export default function Modal(props) {
         let date = formData.get('date') 
         let status = formData.get('status')
 
-        if(!title) {
-            alert('title cannot be empty') 
+        if(!title || !date) {
+            alert('Please fill all the required fields') 
             return  
         } 
 
@@ -63,8 +63,8 @@ export default function Modal(props) {
         let date = formData.get('date') 
         let status = formData.get('status')
 
-        if(!title) {
-            alert('title cannot be empty') 
+        if(!title || !date) {
+            alert('Please fill all the required fields') 
             return  
         }
         let editedTask = {
