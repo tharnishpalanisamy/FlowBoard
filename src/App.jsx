@@ -15,7 +15,7 @@ import TaskManagement from './components/taskManagement/TaskManagement'
 
 const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element = {<Layout/>}>
-        <Route index element={<Personal/>}/> 
+        <Route index element={<Dashboard/>}/> 
         
         {/* Boards */} 
         <Route path='boards/:board' element = {<TaskManagement/>} /> 

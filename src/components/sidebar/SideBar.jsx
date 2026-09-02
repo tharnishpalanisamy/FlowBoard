@@ -21,7 +21,7 @@ export default function SideBar(){
     const {showAddModal , setShowAddModal} = useContext(BoardContext)
 
     function renderBoards(){
-        let boards = JSON.parse(localStorage.getItem('boards') ) || [{boardName : 'Personal' , color:'puple' , icon: 'user'}] 
+        let boards = JSON.parse(localStorage.getItem('boards') ) || [{boardName : 'Personal' , color:'purple' , icon: 'user'}] 
 
         return boards.map(board =>{
             return (

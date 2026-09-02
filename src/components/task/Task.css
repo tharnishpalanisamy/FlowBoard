@@ -55,7 +55,7 @@
 .board{
     padding: 4px 8px; 
     border-radius: 12px; 
-    font-size: 13px;
+    font-size: 13px; 
 } 
 
 .Jira{
@@ -74,15 +74,15 @@
     border-radius: 12px;
     font-size: 13px;
 }
-.High , .Coding{
+.High {
     color: #E35253;
     background: #2F1C26;
 }
-.Medium , .Project{
+.Medium {
     background-color: #21201E; 
     color: #F5A92A;
 }
-.Low , .Personal{
+.Low {
     color: #57AF70; 
     background-color: #122324;
 }
@@ -230,4 +230,45 @@ background: transparent;
     cursor: grabbing;
     border: 1px solid #8D70F0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.board-purple {
+    color: #8B5CF6;
+    background-color: rgba(139, 92, 246, 0.12);
+}
+
+
+.board-blue {
+    color: #3B82F6;
+    background-color: rgba(59, 130, 246, 0.12);
+}
+
+.board-cyan {
+    color: #06B6D4;
+    background-color: rgba(6, 182, 212, 0.12);
+}
+
+.board-green {
+    color: #10B981;
+    background-color: rgba(16, 185, 129, 0.12);
+}
+
+.board-amber {
+    color: #F59E0B;
+    background-color: rgba(245, 158, 11, 0.12);
+}
+
+.board-orange {
+    color: #F97316;
+    background-color: rgba(249, 115, 22, 0.12);
+}
+
+.board-pink {
+    color: #EC4899;
+    background-color: rgba(236, 72, 153, 0.12);
+}
+
+.board-red {
+    color: #EF4444 ;
+    background-color: rgba(239, 68, 68, 0.12);
 }

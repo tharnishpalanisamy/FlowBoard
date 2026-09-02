@@ -39,13 +39,15 @@
 
 
 .modal-title{  
-    color: #86878C;
+    color: #86878C; 
     padding: 10px 0px;
     display: flex;
     flex-direction: column; 
     gap: 7px;
 } 
-
+.title-label , .description-label{
+    color: #86878C; 
+}
 .title-input{ 
     padding:12px 8px; 
     border-radius: 8px; 
@@ -80,7 +82,7 @@
     padding: 10px 0px;
 }
 
-.board , .status , .priority-container , .date-container {
+.priority-container , .date-container {
     display: flex; 
     flex-direction: column;
     gap : 5px;
@@ -90,7 +92,10 @@
     color: #86878C; 
     font-size: 14px;
 }
-.status-select , .board-select ,.priority-select ,.date-input  {
+.board-label{
+    margin-bottom: 5px;
+}
+ .board-select ,.priority-select ,.date-input  {
     width: 200px; 
     background: #18202a; 
     padding: 10px;  
@@ -99,7 +104,20 @@
     color: #E5E6E9;
     border: 2px solid #2D3541;
 }
+.status-select{
+    background: #18202a; 
+    padding: 10px;  
+    font-size: 16px; 
+    border-radius: 10px; 
+    color: #E5E6E9;
+    border: 2px solid #2D3541;
+}
 
+.status-container{
+    margin-top: 10px;
+    display: flex; 
+    flex-direction: column;
+}
 
 
 select:focus{
@@ -120,20 +138,6 @@ option{
     cursor: pointer;
 }
 
-.label{
-    display: flex; 
-    flex-direction: column; 
-    gap: 5px;
-}
-
-.label-select{ 
-    padding: 12px; 
-    border-radius: 10px; 
-    background: #18202a;  
-    border: 2px solid #2D3541;
-    color: #E5E6E9;
-    font-size: 16px; 
-}
 
 .board-select:focus{
     outline: none; 

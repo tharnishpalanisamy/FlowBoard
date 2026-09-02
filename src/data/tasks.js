@@ -4,7 +4,7 @@ export const tasksData = [
     title: "Complete React Course",
     description:
       "Finish the remaining React lessons and complete the required projects.",
-    board: "Kanban",
+    board: "sample",
     status: "todo",
     priority: "High",
     date: "2026-08-12",
@@ -17,7 +17,7 @@ export const tasksData = [
     title: "Solve Graph LeetCode Problems",
     description:
       "Practice graph algorithms and solve at least two LeetCode problems.",
-    board: "Kanban",
+    board: "sample",
     status: "todo",
     priority: "Medium",
     date: "2026-08-13",
@@ -29,8 +29,8 @@ export const tasksData = [
     id: 3,
     title: "Build FlowBoard UI",
     description:
-      "Improve the Kanban board layout and complete the main task interface.",
-    board: "Kanban",
+      "Improve the sample board layout and complete the main task interface.",
+    board: "sample",
     status: "progress",
     priority: "High",
     date: "2026-08-11",
@@ -43,7 +43,7 @@ export const tasksData = [
     title: "Revise JavaScript Concepts",
     description:
       "Revise closures, prototypes, this, promises, and ES6 concepts.",
-    board: "Personal",
+    board: "sample",
     status: "todo",
     priority: "Medium",
     date: "2026-08-15",
@@ -56,7 +56,7 @@ export const tasksData = [
     title: "Plan Weekend Activities",
     description:
       "Decide on activities, gaming, movies, and study goals for the weekend.",
-    board: "Personal",
+    board: "sample",
     status: "todo",
     priority: "Low",
     date: "2026-08-14",
@@ -68,7 +68,7 @@ export const tasksData = [
     id: 6,
     title: "Implement Task Filtering",
     description: "Add filtering by status, priority, board, and labels.",
-    board: "Kanban",
+    board: "sample",
     status: "progress",
     priority: "High",
     date: "2026-08-12",
@@ -81,7 +81,7 @@ export const tasksData = [
     title: "Add Task Editing",
     description:
       "Allow users to open an existing task and update its information.",
-    board: "Kanban",
+    board: "sample",
     status: "progress",
     priority: "High",
     date: "2026-08-13",
@@ -94,7 +94,7 @@ export const tasksData = [
     title: "Learn React State Management",
     description:
       "Understand useState, state updates, lifting state, and component communication.",
-    board: "Kanban",
+    board: "sample",
     status: "done",
     priority: "High",
     date: "2026-08-09",
@@ -120,7 +120,7 @@ export const tasksData = [
     title: "Practice React Props",
     description:
       "Build small components to practice passing and destructuring props.",
-    board: "Personal",
+    board: "sample",
     status: "done",
     priority: "Medium",
     date: "2026-08-08",
@@ -132,7 +132,7 @@ export const tasksData = [
     id: 11,
     title: "Set Up Local Storage",
     description: "Persist FlowBoard tasks using browser localStorage.",
-    board: "Kanban",
+    board: "sample",
     status: "todo",
     priority: "High",
     date: "2026-08-16",
@@ -145,7 +145,7 @@ export const tasksData = [
     title: "Implement Drag and Drop",
     description:
       "Allow tasks to be moved between Todo, Progress, and Done columns.",
-    board: "Kanban",
+    board: "sample",
     status: "todo",
     priority: "High",
     date: "2026-08-18",

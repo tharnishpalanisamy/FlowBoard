@@ -1,9 +1,16 @@
+import { useParams } from 'react-router-dom';
 import './Modal.css'
 
 export default function Modal(props) {
     console.log( 'edit task' , props.editTask);
 
+    console.log('hi' , props.tasks);
 
+    const params = useParams() 
+    const board = params.board  
+    console.log('bioard' , board);
+    
+    
     function createTask(event){
         event.preventDefault() 
         
@@ -12,11 +19,8 @@ export default function Modal(props) {
         
         let title = formData.get('title') 
         let description = formData.get('description') 
-        let board = formData.get('board') 
         let priority = formData.get('priority') 
         let date = formData.get('date') 
-        let count = formData.get('count')  
-        let label = formData.get('label') 
         let status = formData.get('status')
 
         if(!title) {
@@ -35,7 +39,7 @@ export default function Modal(props) {
         
         let newTask = { 
             id : Date.now()  ,  
-            title , board , priority , date , count ,  label , status
+            title ,description ,priority , date  , status , board 
         } 
 
         props.setTasks(prevTasks => [...prevTasks , newTask]) 
@@ -53,11 +57,8 @@ export default function Modal(props) {
         
         let title = formData.get('title') 
         let description = formData.get('description') 
-        let board = formData.get('board') 
         let priority = formData.get('priority') 
         let date = formData.get('date') 
-        let count = formData.get('count')  
-        let label = formData.get('label') 
         let status = formData.get('status')
 
         if(!title) {
@@ -65,7 +66,7 @@ export default function Modal(props) {
             return  
         }
         let editedTask = {
-            id : id , title , description , board , priority , date , count , label , status 
+            id : id , title , description , board , priority , date, status 
         }
 
         props.setTasks(prevTasks =>(
@@ -78,12 +79,6 @@ export default function Modal(props) {
         )) 
 
         props.closeModal() 
-    }
-
-    function renderOptionBoards(){
-        let options  = JSON.parse(localStorage.getItem('boards') ) || [{boardName:'personal'}] 
-
-        return 
     }
 
     return (
@@ -120,7 +115,7 @@ export default function Modal(props) {
                                 className="title-input"
                                 name="title"
                                 id="title"
-                                placeholder="e.g. Learn React Context API"
+                                placeholder="Enter the Task title..."
                                 defaultValue={props.editTask ? props.editTask.title : '' }
                             />
                         </div>
@@ -137,14 +132,14 @@ export default function Modal(props) {
                                 cols={30}
                                 rows={4}
                                 className="description-input"
-                                placeholder="What Needs to be Done?"
+                                placeholder="Add Task Description..."
                                 name="description"
                                 id="description" 
                                 defaultValue={props.editTask?props.editTask.description:''}
                             />
                         </div>
 
-                        <div className="container1">
+                        {/* <div className="container1">
 
                             <div className="board">
                                 <label
@@ -202,7 +197,7 @@ export default function Modal(props) {
                                 </select>
                             </div>
 
-                        </div>
+                        </div> */}
 
                         <div className="container2">
 
@@ -253,26 +248,30 @@ export default function Modal(props) {
 
                         </div>
 
-                        <div className="label">
+                        <div className="status-container">
                             <label
-                                htmlFor="label"
+                                htmlFor="status"
                                 className="board-label"
                             >
-                                Labels
+                                Status
                             </label>
 
                             <select
-                                name="label"
-                                id="label"
-                                className="label-select"
+                                name="status"
+                                id="status"
+                                className="status-select"
                                 defaultValue={props.editTask ?props.editTask.label : null } 
                             >
-                                <option value="Study">
-                                    Study
+                                <option value="todo">
+                                    todo
                                 </option>
 
-                                <option value="Coding">
-                                    Coding
+                                <option value="progress">
+                                    In progress
+                                </option>
+
+                                <option value="done">
+                                     done
                                 </option>
                             </select>
                         </div>

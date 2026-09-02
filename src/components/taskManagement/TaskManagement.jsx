@@ -31,6 +31,8 @@ export default function TaskManagement(){
             ]
     )
     
+    console.log( 'sosnin' ,tasks);
+    
 
     useEffect(() => {
         localStorage.setItem('columns', JSON.stringify(columns))
