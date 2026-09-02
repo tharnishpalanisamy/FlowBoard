@@ -10,11 +10,15 @@ const DRAG_THRESHOLD = 5 // px of movement before a "click" becomes a "drag"
 
 export default function TaskManagement(){ 
     let params = useParams() 
-    let boardType = params.board || 'personal'
+    let boardType = params.board || 'personal' 
+    console.log(boardType);
+    
     
     const [showModal, setShowModal] = useState(false) 
     const [status, setStatus] = useState('todo')
-    const {tasks, setTasks} = useContext(TaskContext) 
+    const {tasks, setTasks} = useContext(TaskContext)  
+    console.log('tasksssss' , tasks);
+    
     const boardTasks = tasks.filter(
         task => task.board === boardType 
     )

@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import './Trash.css'
+import TaskContext from "../../context/taskContext/TaskContext"
+
 export default function Trash(){ 
     const [deletedTasks , setDeletedTasks] = useState(JSON.parse(localStorage.getItem('deletedTasks')) ||  [] )   
     const [selectAll  , setSelectAll] = useState(false)  
+    
+    const[selectedTasks , setSelectedTasks] = useState([])  
 
-    const[selectedTasks , setSelectedTasks] = useState([]) 
+    const {tasks , setTasks} = useContext(TaskContext)
     
     //select
     function handleSelectAll(){   
@@ -23,7 +27,8 @@ export default function Trash(){
             setSelectedTasks(prevVal => prevVal.filter(task => task != id))
         } 
         else{
-            setSelectedTasks(prevVal => [...prevVal , id]) 
+            setSelectedTasks(prevVal => [...prevVal , id])  
+            
         }
 
     }
@@ -35,6 +40,16 @@ export default function Trash(){
         setDeletedTasks(updatedTasks)   
         localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
 
+    } 
+
+
+    //restore 
+
+    function restoreTask(task) {
+        setTasks(prevVal => [...prevVal , task] ) 
+        let updatedTasks = deletedTasks.filter(tasks => tasks.id != task.id) 
+        setDeletedTasks(updatedTasks) 
+        localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks) )
     }
 
     //Date 
@@ -98,7 +113,7 @@ export default function Trash(){
                                 <td>{task.board}</td>
                                 <td>{month} {date.getDate()}</td>
                                 <td>
-                                    <i className="fa-solid fa-recycle"  ></i>
+                                    <i className="fa-solid fa-recycle" onClick={()=>restoreTask(task)}  ></i>
                                     <i className="fa-solid fa-trash" onClick={()=>deleteTask(task.id)}></i> 
 
                                 </td>
