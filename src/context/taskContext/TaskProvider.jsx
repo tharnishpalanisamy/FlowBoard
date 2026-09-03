@@ -6,10 +6,17 @@ export default function TaskProvider({children}) {
     const [tasks , setTasks] = useState(
         localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : tasksData
     ) 
-    const [search , setSearch ] = useState('') 
+    const [search , setSearch ] = useState('')  
+    const [filters , setFilters] = useState({
+    priority: [],
+    dueDate: 'none',
+    sortBy: 'dueDate',
+    order: 'newest'
+}) 
+    const [showPopover , setShowPopOver] = useState(false) 
     return( 
         <TaskContext.Provider 
-            value={{tasks,setTasks , search , setSearch}}
+            value={{tasks,setTasks , search , setSearch , filters , setFilters , showPopover , setShowPopOver}}
         >
             {children}
         </TaskContext.Provider>

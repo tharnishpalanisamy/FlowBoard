@@ -29,7 +29,6 @@ export default function AddBoardModal(){
 
         let boards = JSON.parse(localStorage.getItem('boards'))  || [{boardName : 'Personal' , color:'purple' , icon: 'user'}]  
 
-        console.log('boards' , boards);
         
         const boardExists = boards.some(board =>
             board.boardName.trim().toLowerCase() === boardName.toLowerCase() )

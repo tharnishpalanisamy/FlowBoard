@@ -1,9 +1,10 @@
-import { useContext } from 'react'
+import { useContext , useState } from 'react'
 import './Toolbar.css' 
-import TaskContext from '../../context/taskContext/TaskContext'
+import TaskContext from '../../context/taskContext/TaskContext' 
+import FilterPopOver from '../filterPopover/FilterPopOver'
 
 export default function Toolbar(props){ 
-    const {search , setSearch} = useContext(TaskContext) 
+    const {search , setSearch , showPopover , setShowPopOver} = useContext(TaskContext)  
     return(
         <div className="toolbar">
             <div className="toolbar-options">
@@ -27,7 +28,20 @@ export default function Toolbar(props){
                         onChange={(event) => setSearch(event.target.value)}
                     />
                 </div>
-                <button className="filterBtn"><span><i className='bx bx-filter-alt icon' ></i></span> Filter</button> 
+
+                <div className="filter-container">
+                    <button className="filterBtn" onClick={()=>setShowPopOver(prev => !prev)}>
+                        <span>
+                            <i className='bx bx-filter-alt icon'></i>
+                        </span>
+                        Filter
+                    </button>
+
+                    {showPopover && <FilterPopOver />}
+                </div> 
+
+
+
                 <button className="addTaskBtn" onClick={props.showModal}><span>
                     <i className="fa-solid fa-plus icon-plus icon add-icon"></i></span> Add Task
                 </button>

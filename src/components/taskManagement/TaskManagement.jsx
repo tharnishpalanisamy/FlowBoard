@@ -11,13 +11,11 @@ const DRAG_THRESHOLD = 5 // px of movement before a "click" becomes a "drag"
 export default function TaskManagement(){ 
     let params = useParams() 
     let boardType = params.board || 'personal' 
-    console.log(boardType);
     
     
     const [showModal, setShowModal] = useState(false) 
     const [status, setStatus] = useState('todo')
     const {tasks, setTasks , search , setSearch} = useContext(TaskContext)  
-    console.log('tasksssss' , tasks);
     
     const boardTasks = tasks.filter(
         task => task.board === boardType && task.title.trim().includes(search)
@@ -34,7 +32,6 @@ export default function TaskManagement(){
             ]
     )
     
-    console.log( 'sosnin' ,tasks);
     
 
     useEffect(() => {

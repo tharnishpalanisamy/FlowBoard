@@ -8,8 +8,6 @@ export default function Task(props) {
 
     const date = new Date(props.date) 
     const month = date.toLocaleString('default', { month: 'short' });
-
-    console.log('board' , board);
     
     
     return (

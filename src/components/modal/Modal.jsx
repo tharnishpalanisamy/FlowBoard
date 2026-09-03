@@ -2,16 +2,9 @@ import { useParams } from 'react-router-dom';
 import './Modal.css'
 
 export default function Modal(props) {
-    console.log( 'edit task' , props.editTask);
-
-    console.log('hi' , props.tasks);
 
     const params = useParams() 
-    const board = params.board  
-    console.log('bioard' , board);
-    
-    console.log('props' , props);
-    
+    const board = params.board          
     
     function createTask(event){
         event.preventDefault() 
