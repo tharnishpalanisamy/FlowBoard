@@ -16,11 +16,11 @@ export default function TaskManagement(){
     
     const [showModal, setShowModal] = useState(false) 
     const [status, setStatus] = useState('todo')
-    const {tasks, setTasks} = useContext(TaskContext)  
+    const {tasks, setTasks , search , setSearch} = useContext(TaskContext)  
     console.log('tasksssss' , tasks);
     
     const boardTasks = tasks.filter(
-        task => task.board === boardType 
+        task => task.board === boardType && task.title.trim().includes(search)
     )
     const [selectedTask, setSelectedTask] = useState(null) 
 

@@ -1,6 +1,12 @@
+import { useLocation, useParams } from 'react-router-dom'
 import './Header.css' 
 
-export default function Header(){
+export default function Header(){ 
+    let params = useParams() 
+    const location = useLocation() 
+
+    const isTrash = location.pathname === '/trash' 
+
     return(
         <header>
             <nav className="nav-bar">
@@ -21,7 +27,7 @@ export default function Header(){
                 </div> 
 
                 <div className="options">
-                    <div className="search-task">
+                    {!params.board && !isTrash ? <div className="search-task">
                         <i className="fa-solid fa-magnifying-glass search-icon"></i>
 
                         <input
@@ -29,7 +35,7 @@ export default function Header(){
                             className="input-task"
                             placeholder="Search tasks..."
                         />
-                    </div>
+                    </div> : null}
                     <div className="theme">
                         <button className='theme-btn'><i className='bx bx-sun theme-icon'></i></button> 
                     </div> 

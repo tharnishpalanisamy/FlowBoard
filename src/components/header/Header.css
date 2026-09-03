@@ -55,8 +55,8 @@
 }
 
 .input-task{
-    width: 100%;
-    padding: 10px 100px 10px 40px; /* left padding makes room for the icon */
+    width: 300px;
+    padding: 10px 20px 10px 40px; /* left padding makes room for the icon */
     border-radius: 6px;
     border: 1px solid #334155;
     background: #1E293B;

@@ -42,14 +42,40 @@ export default function Trash(){
 
     } 
 
+    function deleteSelected(){
+        if (selectedTasks.length == 0 ) { 
+            alert('No tasks Selected')
+            return  
+        }
+        let updatedTasks = deletedTasks.filter(task => !selectedTasks.includes(task.id)) 
+        setDeletedTasks(updatedTasks) 
+        localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
+    }
+
 
     //restore 
 
     function restoreTask(task) {
-        setTasks(prevVal => [...prevVal , task] ) 
+        setTasks(prevVal => [...prevVal , task] )  
+        localStorage.setItem('tasks' , JSON.stringify(tasks))
         let updatedTasks = deletedTasks.filter(tasks => tasks.id != task.id) 
-        setDeletedTasks(updatedTasks) 
+        setDeletedTasks(updatedTasks)  
         localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks) )
+    } 
+
+    function restoreSelected(){
+        if(selectedTasks.length == 0) {
+            alert('No task selected') 
+            return 
+        }
+        let tasksToRestore = deletedTasks.filter(task=> selectedTasks.includes(task.id)) 
+        setTasks(prevVal => [...prevVal , ...tasksToRestore]) 
+        localStorage.setItem('tasks' , JSON.stringify(tasks))
+        
+        let updatedTasks = deletedTasks.filter(task => !selectedTasks.includes(task.id)) 
+        setDeletedTasks(updatedTasks) 
+        localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
+
     }
 
     //Date 
@@ -67,14 +93,14 @@ export default function Trash(){
             </div> 
 
             <div className="trash-options-right">
-                <button className="trash-options-button empty-trash-button">
-                    <span> <i className="fa-solid fa-trash"></i> </span> Empty Trash
+                <button className="trash-options-button empty-trash-button" onClick={deleteSelected}>
+                    <span> <i className="fa-solid fa-trash"></i> </span> Delete Selected
                 </button>
 
-                <button className="trash-options-button restore-all-button">
+                <button className="trash-options-button restore-all-button" onClick={restoreSelected}>
                     <span>
                         <i className="fa-solid fa-recycle"></i>
-                    </span>  Restore All
+                    </span>  Restore Selected
                     
                 </button>
             </div>
