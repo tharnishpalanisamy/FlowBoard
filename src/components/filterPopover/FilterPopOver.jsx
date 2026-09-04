@@ -24,7 +24,8 @@ export default function FilterPopOver() {
         setFilters(tempFilters)
         setShowPopOver(false) 
     }
-
+     console.log('filers' , filters);
+     
     const handleClear = () => {
         setFilters(defaultFilters) 
         setTempFilters(defaultFilters) 
@@ -37,7 +38,7 @@ export default function FilterPopOver() {
             ...prev , 
             priority : prev.priority.includes(value) ? prev.priority.filter(item => item != value) 
             : [...prev.priority , value]
-        }))
+        })) 
     }
 
     function changeDueDate(event) {
@@ -91,8 +92,8 @@ export default function FilterPopOver() {
                         type="checkbox"
                         name="priority"
                         onChange={(event)=>changePriority(event)}
-                        value="low"
-                        checked={tempFilters.priority.includes('low')} 
+                        value="Low"
+                        checked={tempFilters.priority.includes('Low')} 
                     />
                     Low
                 </label>
@@ -102,8 +103,8 @@ export default function FilterPopOver() {
                         type="checkbox"
                         name="priority"
                         onChange={(event)=>changePriority(event)}
-                        value="medium" 
-                        checked={tempFilters.priority.includes('medium')}     
+                        value="Medium" 
+                        checked={tempFilters.priority.includes('Medium')}     
                     />
                     Medium
                 </label>
@@ -113,8 +114,8 @@ export default function FilterPopOver() {
                         type="checkbox"
                         name="priority"
                         onChange={(event)=>changePriority(event)}
-                        value="high"
-                        checked={tempFilters.priority.includes('high')}
+                        value="High"
+                        checked={tempFilters.priority.includes('High')}
                     />
                     High
                 </label>

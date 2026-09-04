@@ -1,79 +1,114 @@
 import { useParams } from 'react-router-dom';
 import './Modal.css'
 
+
+function getLocalDateString(d = new Date()) {
+    const year = d.getFullYear()
+    const month = String(d.getMonth() + 1).padStart(2, '0')
+    const day = String(d.getDate()).padStart(2, '0')
+    return `${year}-${month}-${day}`
+}
+
+function isPastDate(dateStr) {
+    if (!dateStr) return true
+
+    const selected = new Date(dateStr + 'T00:00:00')
+    if (isNaN(selected.getTime())) return true   // garbage/unparseable input
+
+    const now = new Date()
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+
+    return selected < today
+}
+
+
 export default function Modal(props) {
 
-    const params = useParams() 
-    const board = params.board          
-    
-    function createTask(event){
-        event.preventDefault() 
-        
-        
-        let formData = new FormData(event.currentTarget) 
-        
-        let title = formData.get('title') 
-        let description = formData.get('description') 
-        let priority = formData.get('priority') 
-        let date = formData.get('date') 
+    const params = useParams()
+    const board = params.board
+
+    function createTask(event) {
+        event.preventDefault()
+
+        let formData = new FormData(event.currentTarget)
+
+        let title = formData.get('title')
+        let description = formData.get('description')
+        let priority = formData.get('priority')
+        let date = formData.get('date')
         let status = formData.get('status')
 
-        if(!title || !date) {
-            alert('Please fill all the required fields') 
-            return  
-        } 
+        if (!title || !date) {
+            alert('Please fill all the required fields')
+            return
+        }
 
-        for (let i = 0 ; i < props.tasks.length ; i++) {
-            let task = props.tasks[i] 
+        if (isPastDate(date)) {
+            alert('Date cannot be from Past')
+            return
+        }
+
+        for (let i = 0; i < props.tasks.length; i++) {
+            let task = props.tasks[i]
             if (task.title == title) {
-                alert('title already exists') 
-                return 
+                alert('title already exists')
+                return
             }
         }
 
-        
-        let newTask = { 
-            id : Date.now()  ,  
-            title ,description ,priority , date  , status , board 
-        } 
+        let newTask = {
+            id: Date.now(),
+            title, description, priority, date, status, board, createdOn: new Date()
+        }
 
-        props.setTasks(prevTasks => [...prevTasks , newTask]) 
+        props.setTasks(prevTasks => [...prevTasks, newTask])
         props.closeModal()
-
-        
     }
 
-    function editTask(event , id) { 
+    function editTask(event, id) {
+        event.preventDefault()
 
-        event.preventDefault() 
-        
-        
-        let formData = new FormData(event.currentTarget) 
-        
-        let title = formData.get('title') 
-        let description = formData.get('description') 
-        let priority = formData.get('priority') 
-        let date = formData.get('date') 
+        let formData = new FormData(event.currentTarget)
+
+        let title = formData.get('title')
+        let description = formData.get('description')
+        let priority = formData.get('priority')
+        let date = formData.get('date')
         let status = formData.get('status')
 
-        if(!title || !date) {
-            alert('Please fill all the required fields') 
-            return  
-        }
-        let editedTask = {
-            id : id , title , description , board , priority , date, status 
+        if (!title || !date) {
+            alert('Please fill all the required fields')
+            return
         }
 
-        props.setTasks(prevTasks =>(
-            prevTasks.map(task =>{
+        if (isPastDate(date)) {
+            alert('Date cannot be from Past')
+            return
+        }
+
+        let editedTask = {
+            id: id, title, description, board, priority, date, status
+        }
+
+        props.setTasks(prevTasks => (
+            prevTasks.map(task => {
                 if (task.id === id) {
                     return editedTask
                 }
-                return task 
+                return task
             })
-        )) 
+        ))
 
-        props.closeModal() 
+        props.closeModal()
+    }
+
+    function handleSubmit(event) {
+        if (!event.currentTarget.checkValidity()) {
+            event.preventDefault()
+            event.currentTarget.reportValidity()
+            return
+        }
+        return props.editTask ? editTask(event, props.editTask.id) : createTask(event)
     }
 
     return (
@@ -82,7 +117,7 @@ export default function Modal(props) {
 
                 <div className="modal-header">
                     <h3 className="header-title">
-                        {props.editTask ? 'Edit Task' :'Add New Task'}
+                        {props.editTask ? 'Edit Task' : 'Add New Task'}
                     </h3>
 
                     <button
@@ -94,8 +129,7 @@ export default function Modal(props) {
                 </div>
 
                 <div className="modal-body">
-                    <form className="add-task-modal" onSubmit={props.editTask ? (event)=> editTask(event , props.editTask.id) 
-                        : createTask}>
+                    <form className="add-task-modal" onSubmit={handleSubmit}>
 
                         <div className="modal-title">
                             <label
@@ -111,7 +145,8 @@ export default function Modal(props) {
                                 name="title"
                                 id="title"
                                 placeholder="Enter the Task title..."
-                                defaultValue={props.editTask ? props.editTask.title : '' }
+                                defaultValue={props.editTask ? props.editTask.title : ''}
+                                required
                             />
                         </div>
 
@@ -129,70 +164,10 @@ export default function Modal(props) {
                                 className="description-input"
                                 placeholder="Add Task Description..."
                                 name="description"
-                                id="description" 
-                                defaultValue={props.editTask?props.editTask.description:''}
+                                id="description"
+                                defaultValue={props.editTask ? props.editTask.description : ''}
                             />
                         </div>
-
-                        {/* <div className="container1">
-
-                            <div className="board">
-                                <label
-                                    htmlFor="board"
-                                    className="board-label"
-                                >
-                                    Board
-                                </label>
-
-                                <select
-                                    name="board"
-                                    id="board"
-                                    className="board-select" 
-                                    defaultValue={props.editTask ?props.editTask.board : null } 
-                                >
-                                    <option value="Personal">
-                                        Personal
-                                    </option>
-
-                                    <option value="Kanban">
-                                        Kanban
-                                    </option>
-
-                                    <option value="Jira">
-                                        Jira
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div className="status">
-                                <label
-                                    htmlFor="status"
-                                    className="status-label"
-                                >
-                                    Status
-                                </label>
-
-                                <select
-                                    name="status"
-                                    id="status"
-                                    className="status-select" 
-                                    defaultValue={props.editTask ? props.editTask.status : props.status}
-                                >
-                                    <option value="todo">
-                                        todo
-                                    </option>
-
-                                    <option value="progress">
-                                        progress
-                                    </option>
-
-                                    <option value="done">
-                                        done
-                                    </option>
-                                </select>
-                            </div>
-
-                        </div> */}
 
                         <div className="container2">
 
@@ -208,7 +183,7 @@ export default function Modal(props) {
                                     name="priority"
                                     id="priority"
                                     className="priority-select"
-                                    defaultValue={props.editTask ?props.editTask.priority : null } 
+                                    defaultValue={props.editTask ? props.editTask.priority : null}
                                 >
                                     <option value="High">
                                         High
@@ -237,7 +212,9 @@ export default function Modal(props) {
                                     className="date-input"
                                     name="date"
                                     id="date"
-                                    defaultValue={props.editTask ?props.editTask.date : null } 
+                                    required
+                                    min={getLocalDateString()}
+                                    defaultValue={props.editTask ? props.editTask.date : null}
                                 />
                             </div>
 
@@ -255,7 +232,7 @@ export default function Modal(props) {
                                 name="status"
                                 id="status"
                                 className="status-select"
-                                defaultValue={props.editTask ?props.editTask.status : props.status } 
+                                defaultValue={props.editTask ? props.editTask.status : props.status}
                             >
                                 <option value="todo">
                                     todo
@@ -266,7 +243,7 @@ export default function Modal(props) {
                                 </option>
 
                                 <option value="done">
-                                     done
+                                    done
                                 </option>
                             </select>
                         </div>

@@ -1,9 +1,9 @@
 import Toolbar from '../toolbar/Toolbar'
 import Column from '../column/Column'
-import Modal from '../modal/modal'
+import Modal from '../modal/Modal'
 import { tasksData } from '../../data/tasks'
 import { useContext, useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom' 
+import { data, useParams } from 'react-router-dom' 
 import TaskContext from '../../context/taskContext/TaskContext'
 
 const DRAG_THRESHOLD = 5 // px of movement before a "click" becomes a "drag"
@@ -15,11 +15,69 @@ export default function TaskManagement(){
     
     const [showModal, setShowModal] = useState(false) 
     const [status, setStatus] = useState('todo')
-    const {tasks, setTasks , search , setSearch} = useContext(TaskContext)  
+    const {tasks, setTasks , search , setSearch , filters , setFilters} = useContext(TaskContext)  
     
-    const boardTasks = tasks.filter(
+    let boardTasks = tasks.filter(
         task => task.board === boardType && task.title.trim().includes(search)
-    )
+    ) 
+    console.log(filters)
+    
+    if(filters) { 
+        if(filters.order) {
+            if (filters.order == 'oldest') {
+                boardTasks = boardTasks.sort((a,b) => new Date(b.createdOn) - new Date(a.createdOn)) 
+            }
+            else{
+                boardTasks = boardTasks.sort((a,b) => new Date(a.createdOn) - new Date(b.createdOn)) 
+            }
+        }
+
+        if(filters.priority.length > 0  ) {
+            boardTasks = boardTasks.filter(task => filters.priority.includes(task.priority)) 
+        }
+        if(filters.overDue) {
+            const date = new Date()  
+            date.setHours(0,0,0,0)
+            const oneWeek = new Date(date) 
+            oneWeek.setDate(date.getDate() - 7) 
+
+            if (filters.overDue == 'overDue') {
+                
+                 
+                boardTasks = boardTasks.filter(task => new Date(task.date) < date  )  
+            }
+            else if(filters.overDue == 'today') {
+                boardTasks = boardTasks.filter(task => new Date(task.date) == date ) 
+            } 
+
+            else if(filters.overDue == 'week') {
+                boardTasks = boardTasks.filter(task => new Date(task.date) >= oneWeek && new Date(task.date) <= date ) 
+            }
+
+        }
+        if(filters.sortBy) {
+            if(filters.sortBy == 'dueDate') {
+                boardTasks = boardTasks.sort((a,b) => new Date(a.date) - new Date(b.date) )
+            } 
+            else if(filters.sortBy == 'createdAt' ) {
+                boardTasks = boardTasks.sort((a,b) => a.createdOn - b.createdOn )
+            }
+            else if(filters.sortBy == 'priority') {
+                let high = boardTasks.filter(task => task.priority == 'High') 
+                let low = boardTasks.filter(task => task.priority == 'Low') 
+                let medium = boardTasks.filter(task => task.priority == 'Medium')  
+                boardTasks = [...high , ...medium , ...low] 
+
+            } 
+
+            else if(filters.sortBy == 'title') {
+                boardTasks = boardTasks.sort((a,b) =>  a.title.localeCompare(b.title) )
+            }
+        }
+
+        
+        
+    }
     const [selectedTask, setSelectedTask] = useState(null) 
 
     const [columns, setColumns] = useState(
