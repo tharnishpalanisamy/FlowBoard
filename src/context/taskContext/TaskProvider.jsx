@@ -8,11 +8,11 @@ export default function TaskProvider({children}) {
     ) 
     const [search , setSearch ] = useState('')  
     const [filters , setFilters] = useState({
-    priority: [],
-    dueDate: 'none',
-    sortBy: 'dueDate',
-    order: 'newest'
-}) 
+        priority: [],
+        dueDate: 'none',
+        sortBy: 'dueDate',
+        order: 'newest'
+    }) 
     const [showPopover , setShowPopOver] = useState(false) 
     return( 
         <TaskContext.Provider 

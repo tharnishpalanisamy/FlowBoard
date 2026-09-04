@@ -3,7 +3,12 @@ import TaskContext from '../../context/taskContext/TaskContext'
 import { useContext, useState } from 'react'
 
 export default function FilterPopOver() {
-
+    const defaultFilters={
+        priority: [],
+        dueDate: 'none',
+        sortBy: 'dueDate',
+        order: 'newest'
+    }
     const {
         filters,
         setFilters,
@@ -21,7 +26,8 @@ export default function FilterPopOver() {
     }
 
     const handleClear = () => {
-        setFilters({})
+        setFilters(defaultFilters) 
+        setTempFilters(defaultFilters) 
     }
 
     //change handlers
@@ -63,9 +69,15 @@ export default function FilterPopOver() {
     return (
         <form className="popover" onSubmit={handleSubmit}>
 
-            <h4 className="popover-title">
-                Filter Tasks
-            </h4>
+            <div className="popover-header">
+                <h4 className="popover-title">
+                    Filter Tasks
+                </h4> 
+
+                <button type='button' className="close-popover-button" onClick={()=>setShowPopOver(false)}>
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
+            </div>
 
             {/* Priority */}
             <div className="popover-filter">

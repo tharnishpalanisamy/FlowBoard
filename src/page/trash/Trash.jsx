@@ -1,23 +1,65 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import './Trash.css'
 import TaskContext from "../../context/taskContext/TaskContext"
 
 export default function Trash(){ 
     const [deletedTasks , setDeletedTasks] = useState(JSON.parse(localStorage.getItem('deletedTasks')) ||  [] )   
-    const [selectAll  , setSelectAll] = useState(false)  
     
     const[selectedTasks , setSelectedTasks] = useState([])  
 
-    const {tasks , setTasks} = useContext(TaskContext)
+    const {tasks , setTasks} = useContext(TaskContext)  
+ 
+    const [ search , setSearch] = useState('')   
+
+    const [filteredTasks , setFilteredTasks ] = useState(deletedTasks) 
+
+    
+    function searchTrash(event) {
+        const value = event.target.value
+
+        setSearch(value)
+
+        const tempFilteredTask = deletedTasks.filter(task =>
+            task.title
+                .toLowerCase()
+                .trim()
+                .includes(value.toLowerCase().trim())
+        )
+
+        setFilteredTasks(tempFilteredTask)
+    }
+
+    //sort by 
+    
+    function changeOrder(event) {
+        const value = event.target.value
+
+        const sortedTasks = [...filteredTasks].sort((a, b) => {
+            if(value === 'newest') {
+                return new Date(b.deletedOn) - new Date(a.deletedOn)
+            }
+
+            return new Date(a.deletedOn) - new Date(b.deletedOn)
+        })
+
+        setFilteredTasks(sortedTasks)
+    }
+
     
     //select
-    function handleSelectAll(){   
-        if(selectedTasks.length == deletedTasks.length  ) { 
-            setSelectedTasks([]) 
-        } 
+    function handleSelectAll(){    
+        const filteredId = filteredTasks.map(task=>task.id) 
+
+        const allSelected = filteredId.every(id=>selectedTasks.includes(id)) 
+
+
+        if(allSelected) {
+            setSelectedTasks(prev=>prev.filter(id=>!filteredId.includes(id))) 
+        }
         else{
-            const newArr = [] 
-            setSelectedTasks(deletedTasks.map(task => task.id))
+            setSelectedTasks(prev => [
+                ...new Set([...prev, ...filteredId])
+            ])
         }
          
     } 
@@ -37,7 +79,9 @@ export default function Trash(){
 
     function deleteTask(id) {  
         let updatedTasks = deletedTasks.filter(task => task.id != id)
-        setDeletedTasks(updatedTasks)   
+        setDeletedTasks(updatedTasks)    
+        setFilteredTasks(updatedTasks)
+        setSelectedTasks(prev => prev.filter(task => task.id != id) )  
         localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
 
     } 
@@ -47,20 +91,25 @@ export default function Trash(){
             alert('No tasks Selected')
             return  
         }
-        let updatedTasks = deletedTasks.filter(task => !selectedTasks.includes(task.id)) 
+        let updatedTasks = deletedTasks.filter(task => !selectedTasks.includes(task.id))  
+        setSelectedTasks([])
         setDeletedTasks(updatedTasks) 
+        setFilteredTasks(updatedTasks)
         localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
     }
 
 
     //restore 
 
-    function restoreTask(task) {
-        setTasks(prevVal => [...prevVal , task] )  
-        localStorage.setItem('tasks' , JSON.stringify(tasks))
-        let updatedTasks = deletedTasks.filter(tasks => tasks.id != task.id) 
-        setDeletedTasks(updatedTasks)  
-        localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks) )
+    function restoreTask(task) { 
+        const updatedTasks = [...tasks , task] 
+        setTasks(updatedTasks )  
+        localStorage.setItem('tasks' , JSON.stringify(updatedTasks))
+        let updatedDeletedTasks = deletedTasks.filter(tasks => tasks.id != task.id) 
+        setDeletedTasks(updatedDeletedTasks)  
+        setFilteredTasks(updatedDeletedTasks)
+        localStorage.setItem('deletedTasks' , JSON.stringify(updatedDeletedTasks) ) 
+        setSelectedTasks(prev => prev.filter(tasks=>tasks.id != task.id ))
     } 
 
     function restoreSelected(){
@@ -69,12 +118,24 @@ export default function Trash(){
             return 
         }
         let tasksToRestore = deletedTasks.filter(task=> selectedTasks.includes(task.id)) 
-        setTasks(prevVal => [...prevVal , ...tasksToRestore]) 
-        localStorage.setItem('tasks' , JSON.stringify(tasks))
         
-        let updatedTasks = deletedTasks.filter(task => !selectedTasks.includes(task.id)) 
-        setDeletedTasks(updatedTasks) 
-        localStorage.setItem('deletedTasks' , JSON.stringify(updatedTasks))
+        
+        const updatedTasks = [
+            ...tasks,
+            ...tasksToRestore
+        ] 
+        setTasks(updatedTasks)
+
+        localStorage.setItem('tasks' , JSON.stringify(updatedTasks))
+        const updatedDeletedTasks = deletedTasks.filter(
+            task => !selectedTasks.includes(task.id)
+        )
+
+        setDeletedTasks(updatedDeletedTasks) 
+        setFilteredTasks(updatedDeletedTasks) 
+        localStorage.setItem('deletedTasks' , JSON.stringify(updatedDeletedTasks)) 
+
+        setSelectedTasks([])
 
     }
 
@@ -86,9 +147,12 @@ export default function Trash(){
         <>
         <div className="trash-options-container">
             <div className="trash-options-left">
-                <input type="text" className="search-trash" placeholder="Search in trash..."/> 
-                <select name="sort-trash" id="sort-trash">
-                    <option value="Newest first">Newest First</option>
+                <input type="text" className="search-trash" placeholder="Search in trash..." 
+                    onChange={(event) => searchTrash(event)}
+                /> 
+                <select name="sort-trash" id="sort-trash" onChange={(event) => changeOrder(event)}>
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
                 </select>
             </div> 
 
@@ -111,9 +175,9 @@ export default function Trash(){
                 <thead>
                     <tr>
                         <th><input type="checkbox" onChange={handleSelectAll} 
-                                        checked={
-                                deletedTasks.length > 0 &&
-                                selectedTasks.length === deletedTasks.length
+                            checked={
+                                filteredTasks.length > 0 &&
+                                filteredTasks.every(task => selectedTasks.includes(task.id))
                             }
                     /></th>
                         <th>Task</th>
@@ -124,11 +188,11 @@ export default function Trash(){
                 </thead>
 
                 <tbody>
-                    {deletedTasks.map(task =>{ 
+                    {filteredTasks.map(task =>{ 
                         let date = new Date(task.deletedOn) 
                         let month = date.toLocaleString('default', { month: 'short' });
                         return(
-                            <tr key={task.title}>
+                            <tr key={task.id}>
                                 <td><input type="checkbox" onChange={()=> handleSelectTask(task.id)} checked={selectedTasks.includes(task.id)}/></td>
                                 <td>
                                     <div className="deleted-title">

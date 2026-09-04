@@ -135,3 +135,21 @@
 .apply-btn:hover {
     background: #7c3aed;
 }
+
+.popover-header{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    
+}
+
+.close-popover-button{  
+    font-size: 20px; 
+    padding: 5px; 
+    padding-bottom: 20px;
+    display: flex; 
+    align-items: start;
+    background: transparent;  
+    border: none;
+    color: whitesmoke;
+}
