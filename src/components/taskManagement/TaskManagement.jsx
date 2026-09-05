@@ -18,39 +18,48 @@ export default function TaskManagement(){
     const {tasks, setTasks , search , setSearch , filters , setFilters} = useContext(TaskContext)  
     
     let boardTasks = tasks.filter(
-        task => task.board === boardType && task.title.trim().includes(search)
+        task => task.board === boardType && task.title.toLowerCase().trim().includes(search.toLowerCase().trim())
     ) 
     console.log(filters)
     
     if(filters) { 
         if(filters.order) {
             if (filters.order == 'oldest') {
-                boardTasks = boardTasks.sort((a,b) => new Date(b.createdOn) - new Date(a.createdOn)) 
+                boardTasks = boardTasks.sort((a,b) => new Date(a.createdOn) - new Date(b.createdOn)) 
             }
             else{
-                boardTasks = boardTasks.sort((a,b) => new Date(a.createdOn) - new Date(b.createdOn)) 
+                boardTasks = boardTasks.sort((a,b) => new Date(b.createdOn) - new Date(a.createdOn)) 
             }
         }
 
         if(filters.priority.length > 0  ) {
             boardTasks = boardTasks.filter(task => filters.priority.includes(task.priority)) 
         }
-        if(filters.overDue) {
+        if(filters.dueDate) {
             const date = new Date()  
             date.setHours(0,0,0,0)
             const oneWeek = new Date(date) 
             oneWeek.setDate(date.getDate() - 7) 
 
-            if (filters.overDue == 'overDue') {
+            if (filters.dueDate == 'overdue') {
                 
-                 
-                boardTasks = boardTasks.filter(task => new Date(task.date) < date  )  
+                boardTasks = boardTasks.filter(task => {
+                    const taskDate = new Date(task.date)
+                    taskDate.setHours(0, 0, 0, 0)
+
+                    return taskDate < date
+                })
             }
-            else if(filters.overDue == 'today') {
-                boardTasks = boardTasks.filter(task => new Date(task.date) == date ) 
+            else if(filters.dueDate == 'today') {
+                boardTasks = boardTasks.filter(task =>{
+                    const taskDate = new Date(task.date)
+                    taskDate.setHours(0, 0, 0, 0)
+
+                    return taskDate.getTime() === date.getTime()
+                }) 
             } 
 
-            else if(filters.overDue == 'week') {
+            else if(filters.dueDate == 'week') {
                 boardTasks = boardTasks.filter(task => new Date(task.date) >= oneWeek && new Date(task.date) <= date ) 
             }
 
@@ -60,7 +69,7 @@ export default function TaskManagement(){
                 boardTasks = boardTasks.sort((a,b) => new Date(a.date) - new Date(b.date) )
             } 
             else if(filters.sortBy == 'createdAt' ) {
-                boardTasks = boardTasks.sort((a,b) => a.createdOn - b.createdOn )
+                boardTasks = boardTasks.sort((a,b) => new Date(a.createdOn) - new Date(b.createdOn) )
             }
             else if(filters.sortBy == 'priority') {
                 let high = boardTasks.filter(task => task.priority == 'High') 
@@ -71,7 +80,7 @@ export default function TaskManagement(){
             } 
 
             else if(filters.sortBy == 'title') {
-                boardTasks = boardTasks.sort((a,b) =>  a.title.localeCompare(b.title) )
+                boardTasks = boardTasks.sort((a,b) =>  b.title.localeCompare(a.title) )
             }
         }
 
